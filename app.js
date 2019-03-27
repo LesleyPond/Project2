@@ -2,7 +2,7 @@ const express = require("express");
 const ejs = require("ejs");
 const path = require('path');
 require("dotenv").config();
-
+const db= require("./models")
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -15,5 +15,8 @@ require('./routes/api-routes')(app);
 
 
 
-
-app.listen(PORT, () => console.log(`App currently listening @ http://localhost:${PORT}`));
+db.sequelize.sync({force:true}).then(function(){
+    app.listen(PORT, () => {
+      console.log(`App listening on PORT ${PORT}`);
+    })
+  })
