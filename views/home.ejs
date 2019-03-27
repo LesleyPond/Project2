@@ -1,5 +1,112 @@
-<div class="container">
+<%-include("partials/header")%>
+<div class="navBar">
 
-    <h1>Welcome to our HomePage</h1>
+    <span class="navvy"><button class="modal-trigger btn btn-blue" href="#modal1">Sign In/Sign
+                    Up</button></span>
+
 
 </div>
+
+
+<h1 class="title">Pollogy</h1>
+
+<div class="pollogy-index">
+    <div class="carousel">
+            <div class="carousel-item">
+                    <div class="carousel-header">
+                            <h5 class="carousel-header">Create Interactive Polls</h5>
+                    </div>
+                    <img src="/images/poll.png" class="carousel-image">
+                    <p class="carousel-info">Share your poll with others and watch the results fly in!</p>
+
+            </div>
+            <div class="carousel-item">
+                    <div class="carousel-header">
+                            <h5 class="carousel-header">Live Results</h5>
+                    </div>
+                    <img src="/images/live.png" class="carousel-image">
+                    <p class="carousel-info">See the results to your polls in real time!</p>
+
+            </div>
+            <div class="carousel-item">
+                    <div class="carousel-header">
+                            <h5 class="carousel-header">Easy to read graphs</h5>
+                    </div>
+                    <img src="/images/graph.png" class="carousel-image">
+                    <p class="carousel-info">See visual representations of your poll in easy to read graphs!
+                    </p>
+
+
+            </div>
+            <div class="carousel-item">
+                    <div class="carousel-header">
+                            <h5 class="carousel-header">Use on mobile or desktop</h5>
+                    </div>
+                    <img src="/images/smart-phone-icon.png" class="carousel-image">
+                    <p class="carousel-info">Users can access polls from both their phone and their
+                            computer!</p>
+            </div>
+
+    </div>
+</div>
+<!--Modal sign-in-->
+<div id="modal1" class="modal">
+    <div class="modal-content">
+            <h4>Sign-In</h4>
+            <div class="row">
+                    <form class="col s12">
+
+                            <div class="row">
+                                    <div class="input-field col s12">
+                                            <input id="email" type="email" class="validate">
+                                            <label for="email">Email</label>
+                                    </div>
+                            </div>
+                            <div class="row">
+                                    <div class="input-field col s12">
+                                            <input id="password" type="password" class="validate">
+                                            <label for="password">Password</label>
+                                    </div>
+                            </div>
+                    </form>
+            </div>
+    </div>
+    <div class="modal-footer">
+            <a href="#"" id="modal2Open" class="modal-trigger">Create a new account &nbsp&nbsp</a>
+            <button class="btn btn-blue">Sign In</button>
+    </div>
+</div>
+<!--modal sign up-->
+<div id="modal2" class="modal">
+    <div class="modal-content">
+            <h4>Create Account</h4>
+            <div class="row">
+                    <form class="col s12">
+
+                            <div class="row">
+                                    <div class="input-field col s12">
+                                            <input id="email" type="email" class="validate">
+                                            <label for="email">Email</label>
+                                    </div>
+                            </div>
+                            <div class="row">
+                                    <div class="input-field col s12">
+                                            <input id="password" type="password" class="validate">
+                                            <label for="password">Password</label>
+                                    </div>
+                            </div>
+                            <div class="row">
+                                    <div class="input-field col s12">
+                                            <input id="password" type="password" class="validate">
+                                            <label for="password">Confirm Password</label>
+                                    </div>
+                            </div>
+                    </form>
+            </div>
+    </div>
+    <div class="modal-footer">
+            <a href="#" id="modal1Open" class="modal-trigger">Already have an account? &nbsp&nbsp</a>
+            <button class="btn btn-blue">Sign In</button>
+    </div>
+</div>
+<%-include("partials/footer")%>

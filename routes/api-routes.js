@@ -3,4 +3,12 @@ module.exports = (app) => {
         res.render('home');
     });
 
+    app.get('/landingpage', (req, res) =>{
+        res.render('landingpage');
+    });
+
+    app.get('/createPoll', (req, res) => {
+        res.render('createPoll');
+    })
+
 };
