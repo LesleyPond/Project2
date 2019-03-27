@@ -18,6 +18,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         option1Votes: {
             type:DataTypes.INTEGER,
+            allowNull: true
         },
         option2 : {
             type: DataTypes.STRING,
@@ -28,6 +29,7 @@ module.exports = (sequelize, DataTypes) => {
             }
         },option2Votes: {
             type:DataTypes.INTEGER,
+            allowNull: true
         },
         option3 : {
             type: DataTypes.STRING,
@@ -35,6 +37,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         option3Votes: {
             type:DataTypes.INTEGER,
+            allowNull: true
         },
         option4 : {
             type: DataTypes.STRING,
@@ -42,6 +45,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         option4Votes: {
             type:DataTypes.INTEGER,
+            allowNull: true
         },
         option5 : {
             type: DataTypes.STRING,
@@ -49,6 +53,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         option5Votes: {
             type:DataTypes.INTEGER,
+            allowNull: true
         },
         option6 : {
             type: DataTypes.STRING,
@@ -56,6 +61,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         option6Votes: {
             type:DataTypes.INTEGER,
+            allowNull: true
         },
         option7 : {
             type: DataTypes.STRING,
@@ -63,6 +69,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         option7Votes: {
             type:DataTypes.INTEGER,
+            allowNull: true
         },
         option8 : {
             type: DataTypes.STRING,
@@ -70,6 +77,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         option8Votes: {
             type:DataTypes.INTEGER,
+            allowNull: true
         },
         option9 : {
             type: DataTypes.STRING,
@@ -77,6 +85,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         option9Votes: {
             type:DataTypes.INTEGER,
+            allowNull: true
         },
         option10 : {
             type: DataTypes.STRING,
@@ -84,6 +93,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         option10Votes: {
             type:DataTypes.INTEGER,
+            allowNull: true
         },
 
     });
