@@ -1,0 +1,58 @@
+<%-include("partials/header")%>
+<div class="navBar">
+    <span class="navvy"><button class="btn btn-blue ">Sign Out</button></span>
+    <span class="navvy"><button class="btn btn-blue modal-trigger" href=".modal3">Settings</button></span>
+</div>
+<div class="container">
+    <div class="jumbo">
+            <div class="landingPageOptions">
+                    <br>
+                    <br>
+                    <br>
+                    <div class="row">
+                            <div class="col s4 offset-s2 what" id="navigateCreatePoll">
+                                    <a href="createPoll.html">
+                                    <img src="/images/poll.jpg" class="homeImage">
+                                    <h4>Create New Poll</h4>
+                            </a>
+                            </div>
+                            <div class="col s4 what navigatePolls">
+                                    <img src="/images/polls.jpg" class="homeImage">
+                                    <h4>View Polls</h4>
+                            </div>
+                    </div>
+            </div>
+    </div>
+</div>
+
+<!--settings modal-->
+<div id="modal3" class="modal modal3">
+    <div class="modal-content">
+            <h4>Change Password</h4>
+            <div class="row">
+                    <form class="col s12">
+
+                            <div class="row">
+                                    <div class="input-field col s12">
+                                            <input id="passwordChange1" type="password" class="validate">
+                                            <label for="passwordChange1">New Password</label>
+                                    </div>
+                            </div>
+                            <div class="row">
+                                    <div class="input-field col s12">
+                                            <input id="passwordChange2" type="password" class="validate">
+                                            <label for="passwordChange2">Confirm New Password</label>
+                                            <p style="display:none" id="passwordSuccess">Password
+                                                    succesfully updated</p>
+                                    </div>
+
+                            </div>
+                    </form>
+            </div>
+    </div>
+    <div class="modal-footer">
+            <button class="btn btn-blue" id="updatePassword">Update</button>
+
+    </div>
+</div>
+<%-include("partials/footer")%>

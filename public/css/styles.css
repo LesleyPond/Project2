@@ -1,0 +1,104 @@
+body{
+    background-image: url("/images/hands.jpg");
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+.nav-wrapper{
+    background-color: #50b3da;
+}
+h1{
+    font-family: 'Comfortaa', cursive;
+    font-size:80px;
+    margin:20px 0px 0px 0px;
+}
+h4,h5{
+    text-align:center;
+}
+.carousel{
+    height:400px!important;
+    margin:0px!important;
+}
+.carousel-item{
+    background: #ffffff;
+    border: 1px solid #b6b5b5;
+    box-shadow: 5px 10px  1px 1px #50b3da;
+    height:300px!important;
+    width:300px!important;
+    
+   
+}
+.carousel-header{
+    background-color: #ffffff;
+    height: 50px;
+    margin:10px;
+    font-family: 'Comfortaa', cursive;
+    color: #086185;
+
+}
+.carousel-image{
+max-height: 150px;
+max-width:150px;
+margin-left:80px;
+}
+.title{
+    text-align:center;
+    color:#50b3da;
+    font-size:100px;
+    margin:50px 0px 0px 0px;
+}
+.carousel-info{
+    text-align:center;
+}
+.navBar{
+    text-align:right;
+    margin:20px;
+}
+.navvy{
+    font-size:20px;
+    margin-right:20px;
+    font-family: 'Comfortaa', cursive;
+    color: #50b3da;
+    border-radius: 5px;
+    padding:10px;
+}
+#modal1, #modal2, #modal3{
+    width:400px!important;
+}
+.btn-blue{
+    background-color: #50b3da;
+}
+.jumbo{
+    
+    min-height:500px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow:hidden;
+}
+.homeImage{
+    max-height:300px;
+    max-width:300px;
+    opacity:1;
+    margin:20px;
+}
+.what{
+    border-radius:10px;
+}
+.what:hover{
+    background:#b6b5b5;
+  
+}
+h4{
+    color: #086185;
+}
+.createPollContainer{
+    position:relative;
+    box-shadow: 5px 10px #b6b5b5;
+    border: 1px solid #b6b5b5;
+}
+#createPoll{
+    text-align:center;
+    font-family: 'Comfortaa', cursive;
+}
+.options{
+    width:450px!important;
+}
