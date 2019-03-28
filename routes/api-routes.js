@@ -16,6 +16,7 @@ module.exports = app => {
     })
 
 
+
     app.get('/login', (req, res) => {
         res.render('login');
     });
@@ -30,3 +31,4 @@ module.exports = app => {
         res.render('restricted');
     })
 };
+
