@@ -30,5 +30,9 @@ module.exports = app => {
     app.get('/restricted', (req, res) => {
         res.render('restricted');
     })
+    
+    app.get('/viewPolls', (req, res) => {
+        res.render('viewPolls');
+    })
 };
 
