@@ -18,9 +18,11 @@
   },
   "homepage": "https://github.com/kendallsdavis/Project2#readme",
   "dependencies": {
+    "bcrypt": "^3.0.5",
     "dotenv": "^7.0.0",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
+    "jsonwebtoken": "^8.5.1",
     "mysql2": "^1.6.5",
     "sequelize": "^5.2.0"
   }
