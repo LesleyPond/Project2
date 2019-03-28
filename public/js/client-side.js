@@ -23,6 +23,9 @@ $("#modal1Open").on("click", function () {
 let optionNumber = 2;
 $("#addMoreOptions").on("click", function () {
     optionNumber++;
+    if(optionNumber > 10){
+        return
+    }
     let newInput = $("<input>");
     newInput.attr("id", "option" + optionNumber);
     newInput.attr("type", "text");
@@ -46,4 +49,5 @@ $(document).on('click', '.optionDelete', function () {
         }
     })
     $(this).remove();
+    optionNumber --;
 })
