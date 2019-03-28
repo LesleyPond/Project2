@@ -1,5 +1,5 @@
 const authController = require('../controllers/auth');
-const pollsController = require('../controllers/poll');
+const pollsController = require('../controllers/polls');
 const authMiddleware = require('../middlewares/auth');
 
 module.exports = app => {
