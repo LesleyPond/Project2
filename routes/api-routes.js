@@ -10,5 +10,7 @@ module.exports = (app) => {
     app.get('/createPoll', (req, res) => {
         res.render('createPoll');
     })
-
+    app.get('/viewPolls', (req, res) => {
+        res.render('viewPolls');
+    })
 };
