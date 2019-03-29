@@ -15,12 +15,12 @@ $(document).ready(function () {
 
 
 
-
+let currentUserId;
 $('#signupButton').on('click', function() {
     const regEmail = $('#emailSignup').val().trim();
     const regPassword = $('#passwordSignup').val().trim();
     const confPassword = $('#passwordSignupConfirm').val().trim();
-
+    
 
     const userObj = {
         email_address: regEmail,
@@ -29,8 +29,16 @@ $('#signupButton').on('click', function() {
 
 
     $.post('/', userObj, (result) => {
+        if (result.success) {
+            location.href = '/landingpage'
+            console.log(result)
+             currentUserId = result.results.id;
+            console.log("current user id: ", currentUserId);
+            
+        } else {
+            console.log(`sorry`);
+        }
 
-        console.log(result);
    
     })
 })
@@ -46,6 +54,7 @@ $('#signinButton').on('click', function() {
     }, (result) => {
    
             if (result.success) {
+                console.log(result)
                 location.href = '/landingpage'
             } else {
                 console.log(`sorry`);
@@ -108,7 +117,7 @@ $(document).on('click', '.optionDelete', function () {
 //send the poll info server side////
 $("#createPollButton").on("click", function(event){
     event.preventDefault();
-    
+    console.log(currentUserId)
     let question = $("#pollQuestion").val().trim();
     let option1 = $("#option1").val().trim();
     let option2 = $("#option2").val().trim();
@@ -120,7 +129,6 @@ $("#createPollButton").on("click", function(event){
     let option8 = $("#option8").val()|| null;
     let option9 = $("#option9").val()|| null;
     let option10 = $("#option10").val() || null;
-    // let UserId = how do we get the user id here?
     let newPoll = {
         question: question,
         option1 : option1,
@@ -133,13 +141,14 @@ $("#createPollButton").on("click", function(event){
         option8 : option8,
         option9 : option9,
         option10 : option10,
-        UserId: UserId,
+        UserId: 1
     }
     $.ajax("/polls", {
         type: "POST",
         data: newPoll
     }).then(function(results){
         console.log(results)
+        
     })
 })
 

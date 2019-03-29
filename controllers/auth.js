@@ -37,9 +37,10 @@ const register = async (req, res) => {
             password: bcrypt.hashSync(req.body.password, parseInt(process.env.SALTROUNDS))
         };
         return userService.createUser(user)
-        .then(() => {
+        .then((results) => {
             res.send({
-                success: true
+                success: true,
+                results: results
             });
         });
     })
