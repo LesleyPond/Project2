@@ -8,14 +8,6 @@ $(document).ready(function () {
 });
 
 
-$(document).ready(function () {
-    $('.tap-target').tapTarget('open');
-});
-
-
-
-
-let currentUserId;
 $('#signupButton').on('click', function() {
     const regEmail = $('#emailSignup').val().trim();
     const regPassword = $('#passwordSignup').val().trim();
@@ -28,21 +20,17 @@ $('#signupButton').on('click', function() {
     };
 
     $.post('/', userObj, (result) => {
-<<<<<<< HEAD
         if (result.success) {
-            location.href = '/landingpage'
             console.log(result)
-             currentUserId = result.results.id;
+             let currentUserId = result.data.id;
+             localStorage.setItem('currentUserId', currentUserId);
             console.log("current user id: ", currentUserId);
-            
+            // location.href = '/landingpage'
         } else {
             console.log(`sorry`);
         }
 
    
-=======
-        location.href = '/landingpage'
->>>>>>> 9852e8015c2399a42f17cd5176208e76379cc9d5
     })
 })
 
@@ -120,7 +108,6 @@ $(document).on('click', '.optionDelete', function () {
 //send the poll info server side////
 $("#createPollButton").on("click", function(event){
     event.preventDefault();
-    console.log(currentUserId)
     let question = $("#pollQuestion").val().trim();
     let option1 = $("#option1").val().trim();
     let option2 = $("#option2").val().trim();
@@ -132,6 +119,7 @@ $("#createPollButton").on("click", function(event){
     let option8 = $("#option8").val()|| null;
     let option9 = $("#option9").val()|| null;
     let option10 = $("#option10").val() || null;
+    let UserId = localStorage.getItem('currentUserId');
     let newPoll = {
         question: question,
         option1 : option1,
@@ -144,7 +132,7 @@ $("#createPollButton").on("click", function(event){
         option8 : option8,
         option9 : option9,
         option10 : option10,
-        UserId: 1
+        UserId: UserId
     }
     $.ajax("/polls", {
         type: "POST",
