@@ -1,4 +1,5 @@
 $(document).ready(function () {
+// On document load, initiate carousel of info tiles
     $('.carousel').carousel();
     setInterval(function () {
         $('.carousel').carousel('next');
@@ -6,10 +7,8 @@ $(document).ready(function () {
     $('.modal').modal();
 });
 
-$(document).ready(function () {
-    $('.tap-target').tapTarget('open');
-});
-
+// Modals created for Sign-In and Create new account. Below two code chunks toggle the models on and off as each one is
+// selected
 $("#modal2Open").on("click", function () {
     $("#modal1").modal("close")
     $("#modal2").modal("open")
@@ -20,6 +19,11 @@ $("#modal1Open").on("click", function () {
     $("#modal1").modal("open")
 })
 
+// When a user clicks on #addMoreOptions, if the current option count is less than 10....
+// Grab the user input from the form, and assign to variable newInput
+// Add id, and type attributes. Add "options" as the class
+// Then generate a button with class "btn", text of "X", a data-id attribute, and "optionDelete" as a class
+// Append the newInput and newButton to the #moreOptions div
 let optionNumber = 2;
 $("#addMoreOptions").on("click", function () {
     optionNumber++;
@@ -39,7 +43,9 @@ $("#addMoreOptions").on("click", function () {
     $("#moreOptions").append(newButton)
 })
 
-
+// When a user clicks on the delete button next to an option
+// grab the data-id attribute from the option selected, assign that value to a new variable called buttonID
+// look through each option div, and if the button ID of that div matches the button id assigned to buttonID, delete that option 
 $(document).on('click', '.optionDelete', function () {
     let buttonID = $(this).attr("data-id")
     console.log(buttonID);
