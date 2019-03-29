@@ -56,4 +56,41 @@ $(document).on('click', '.optionDelete', function () {
     })
     $(this).remove();
     optionNumber --;
+});
+
+//send the poll info server side////
+$("#createPollButton").on("click", function(event){
+    event.preventDefault();
+    
+    let question = $("#pollQuestion").val().trim();
+    let option1 = ("#option1").val().trim();
+    let option2 = ("#option2").val().trim();
+    let option3 = ("#option3").val().trim() || null;
+    let option4 = ("#option4").val().trim() || null;
+    let option5 = ("#option5").val().trim() || null;
+    let option6 = ("#option6").val().trim() || null;
+    let option7 = ("#option7").val().trim() || null;
+    let option8 = ("#option8").val().trim() || null;
+    let option9 = ("#option9").val().trim() || null;
+    let option10 = ("#option10").val().trim() || null;
+    let newPoll = {
+        question: question,
+        option1 : option1,
+        option2 : option2,
+        option3 : option3,
+        option4 : option4,
+        option5 : option5,
+        option6 : option6,
+        option7 : option7,
+        option8 : option8,
+        option9 : option9,
+        option10 : option10
+    }
+    $.ajax("api/polls", {
+        type: "POST",
+        data: newPoll
+    }).then(function(results){
+        console.log(results)
+    })
 })
+

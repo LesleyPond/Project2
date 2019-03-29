@@ -17,6 +17,9 @@ module.exports = app => {
     app.get('/createPoll', (req, res) => {
         res.render('createPoll');
     })
+    app.get('/pleaselogin', (req, res) => {
+        res.render('pleaselogin');
+    })
 
     app.get('/login', (req, res) => {
         res.render('login');
