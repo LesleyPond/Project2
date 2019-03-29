@@ -27,11 +27,8 @@ $('#signupButton').on('click', function() {
         password: regPassword
     };
 
-
     $.post('/', userObj, (result) => {
-
-        console.log(result);
-   
+        location.href = '/landingpage'
     })
 })
 
