@@ -5,11 +5,13 @@ require("dotenv").config();
 const db= require("./models")
 const app = express();
 const PORT = process.env.PORT || 3000;
+const cookieParser = require('cookie-parser');
 
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '/public')));
+app.use(cookieParser());
 
 require('./routes/api-routes')(app);
 

@@ -1,6 +1,6 @@
 const db = require('../models');
 
-const getUserByEmail = (email) => db.User.findOne({where: {email: email}})
+const getUserByEmail = (email) => db.User.findOne({where: {email_address: email}})
 
 const createUser = (user) => db.User.create(user);
 
