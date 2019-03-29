@@ -7,7 +7,8 @@ module.exports = app => {
         res.render('home');
     });
 
-    app.get('/landingpage', (req, res) =>{
+
+    app.get('/landingpage', authMiddleware.checkAuth, (req, res) =>{
         res.render('landingpage');
     });
 

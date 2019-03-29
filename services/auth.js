@@ -3,9 +3,9 @@ const jwt = require('jsonwebtoken');
 const db = require('../models');
 
 const authenticate = async params => {
-    return await db.Users.findOne({
+    return await db.User.findOne({
         where: {
-            email: params.email
+            email_address: params.email_address
         },
         raw: true
     }).then(user => {
@@ -14,7 +14,7 @@ const authenticate = async params => {
         if (!bcrypt.compareSync(params.password || '', user.password))
             throw new Error(`Authentication failed. Wrong password.`);
         const payload = {
-            email: user.email,
+            email_address: user.email_address,
             id: user.id,
             time: new Date()
         };

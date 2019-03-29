@@ -12,6 +12,7 @@ const login = async (req, res) => {
                 success: true,
                 data: { token }
             });
+            
         })
         .catch(error => {
             res.send({
@@ -22,7 +23,7 @@ const login = async (req, res) => {
 };
 
 const register = async (req, res) => {
-    const email = req.body.email;
+    const email = req.body.email_address;
     return await userService.getUserByEmail(email || '')
     .then(exists => {
         if (exists) {
@@ -32,10 +33,10 @@ const register = async (req, res) => {
             });
         }
         const user = {
-            email: email,
+            email_address: email,
             password: bcrypt.hashSync(req.body.password, parseInt(process.env.SALTROUNDS))
         };
-        return userService.addUser(user)
+        return userService.createUser(user)
         .then(() => {
             res.send({
                 success: true
