@@ -1,4 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
+// Create table called "User" to caputure user email address and password
     const User = sequelize.define('User', {
         email_address: {
             type: DataTypes.STRING,
