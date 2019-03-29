@@ -9,29 +9,37 @@ $(document).ready(function () {
 
 
 $('#signupButton').on('click', function() {
+    $("#noConfirm").hide();
     const regEmail = $('#emailSignup').val().trim();
     const regPassword = $('#passwordSignup').val().trim();
     const confPassword = $('#passwordSignupConfirm').val().trim();
     
-
-    const userObj = {
-        email_address: regEmail,
-        password: regPassword
-    };
-
-    $.post('/', userObj, (result) => {
-        if (result.success) {
-            console.log(result)
-             let currentUserId = result.data.id;
-             localStorage.setItem('currentUserId', currentUserId);
-            console.log("current user id: ", currentUserId);
-            // location.href = '/landingpage'
-        } else {
-            console.log(`sorry`);
-        }
-
+    if (regPassword === confPassword){
+        const userObj = {
+            email_address: regEmail,
+            password: regPassword
+        };
+    
+        $.post('/', userObj, (result) => {
+            if (result.success) {
+                console.log(result)
+                 let currentUserId = result.data.id;
+                 localStorage.setItem('currentUserId', currentUserId);
+                console.log("current user id: ", currentUserId);
+                location.href = '/landingpage'
+            } else {
+                console.log(result.message)
+                $("#badSignin").append(result.message)
+                $("#badSignin").show()
+            }
+    
+       
+        })
+    }
+    else{
+        $("#noConfirm").show();
+    }
    
-    })
 })
 
 
@@ -39,6 +47,7 @@ $('#signupButton').on('click', function() {
 $('#signinButton').on('click', function() {
     const email = $('#emailSignin').val().trim();
     const password = $('#passwordSignin').val().trim();
+
     $.post('/login', {
         email_address: email,
         password: password
@@ -49,6 +58,7 @@ $('#signinButton').on('click', function() {
                 location.href = '/landingpage'
             } else {
                 console.log(`sorry`);
+                $("#badLogin").show()
             }
 
     })
