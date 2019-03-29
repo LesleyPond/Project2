@@ -37,11 +37,26 @@ const register = async (req, res) => {
             password: bcrypt.hashSync(req.body.password, parseInt(process.env.SALTROUNDS))
         };
         return userService.createUser(user)
+<<<<<<< HEAD
         .then((results) => {
             res.send({
                 success: true,
                 results: results
+=======
+        .then((data) => {
+            // res.send({
+            //     success: true,
+            //     data: data
+            // });
+            let token = jwt.sign({email_address: data.email_address, password: data.password}, process.env.JWT_ENCRYPTION, {
+                expiresIn: process.env.JWT_EXPIRY
+>>>>>>> 9852e8015c2399a42f17cd5176208e76379cc9d5
             });
+            res.cookie('jwt', token);
+            // return token;
+        })
+        .catch(error => {
+            res.json({message: `error: ${error}`})
         });
     })
 };
