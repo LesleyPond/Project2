@@ -38,15 +38,16 @@ const register = async (req, res) => {
         };
         return userService.createUser(user)
         .then((data) => {
-            // res.send({
-            //     success: true,
-            //     data: data
-            // });
+            
             let token = jwt.sign({email_address: data.email_address, password: data.password}, process.env.JWT_ENCRYPTION, {
                 expiresIn: process.env.JWT_EXPIRY
             });
             res.cookie('jwt', token);
             // return token;
+            res.send({
+                success: true,
+                data: data
+             });
         })
         .catch(error => {
             res.json({message: `error: ${error}`})

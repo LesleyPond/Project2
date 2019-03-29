@@ -17,9 +17,12 @@ module.exports = app => {
 
     app.get('/createPoll', (req, res) => {
         res.render('createPoll');
-    })
+    });
     app.get('/pleaselogin', (req, res) => {
         res.render('pleaselogin');
+    });
+    app.get('/viewPolls', (req, res) => {
+        res.render('viewPolls');
     })
 
     app.get('/login', (req, res) => {
@@ -30,14 +33,13 @@ module.exports = app => {
 
     app.get('/polls', authMiddleware.checkAuth, pollsController.getPolls);
     app.get('/polls/:session-id', pollsController.getPollByID);
-    app.post('polls', authMiddleware.checkAuth, pollsController.addPoll);
+    app.post('/polls', authMiddleware.checkAuth, pollsController.addPoll);
 
     app.get('/restricted', (req, res) => {
         res.render('restricted');
-    })
+    });
 
-    app.get('/viewPolls', (req, res) => {
-        res.render('viewPolls');
-    })
+    
+    
 };
 

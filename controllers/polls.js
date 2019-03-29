@@ -20,12 +20,7 @@ const getPollByID = async (req, res) => {
 };
 
 const addPoll = async (req, res) => {
-    pollSession.addPoll({
-        name: req.body.title,
-        topic: req.body.topic,
-        duration: req.body.duration,
-        userid: req.user.id
-    })
+    pollSession.addPoll(req.body)
         .then(data => res.send(data));
 }
 
