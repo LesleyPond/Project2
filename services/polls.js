@@ -1,10 +1,10 @@
 const db = require('../models');
 
-const getAll = () => db.Polls.findAll();
+const getAll = () => db.Poll.findAll();
 
-const getById = id => db.Polls.findById(id);
+const getById = id => db.Poll.findById(id);
 
-const addPoll = poll => db.Polls.create(poll);
+const addPoll = poll => db.Poll.create(poll);
 
 module.exports = {
     getAll: getAll,
