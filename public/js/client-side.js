@@ -7,7 +7,7 @@ $(document).ready(function () {
     $('.modal').modal();
 });
 
-
+//on sign up button click, check to make sure passwords match. If they don't, show error message. If they do, create new user in db, login, and go to landing page
 $('#signupButton').on('click', function() {
     $("#noConfirm").hide();
     const regEmail = $('#emailSignup').val().trim();
@@ -43,7 +43,7 @@ $('#signupButton').on('click', function() {
 })
 
 
-
+//on sign in button click, sign in! If unable to sign in, show error div.//
 $('#signinButton').on('click', function() {
     const email = $('#emailSignin').val().trim();
     const password = $('#passwordSignin').val().trim();
@@ -62,6 +62,10 @@ $('#signinButton').on('click', function() {
             }
 
     })
+});
+
+$(".signOutButton").on("click", function(){
+    ///need to add sign out functionality//
 })
 
 
@@ -149,6 +153,7 @@ $("#createPollButton").on("click", function(event){
         data: newPoll
     }).then(function(results){
         console.log(results)
+        location.href="viewPolls"
         
     })
 })
