@@ -9,9 +9,9 @@ module.exports = (sequelize, DataTypes) => {
         },
         password: {
             type: DataTypes.STRING,
-            validate: {
-                isAlphanumeric: true,
-            }
+            // validate: {
+            //     isAlphanumeric: true,
+            // }
         }
     });
     User.associate = (models) => {

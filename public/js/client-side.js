@@ -7,8 +7,55 @@ $(document).ready(function () {
     $('.modal').modal();
 });
 
-// Modals created for Sign-In and Create new account. Below two code chunks toggle the models on and off as each one is
-// selected
+
+$(document).ready(function () {
+    $('.tap-target').tapTarget('open');
+});
+
+
+
+
+
+$('#signupButton').on('click', function() {
+    const regEmail = $('#emailSignup').val().trim();
+    const regPassword = $('#passwordSignup').val().trim();
+    const confPassword = $('#passwordSignupConfirm').val().trim();
+
+
+    const userObj = {
+        email_address: regEmail,
+        password: regPassword
+    };
+
+
+    $.post('/', userObj, (result) => {
+
+        console.log(result);
+   
+    })
+})
+
+
+
+$('#signinButton').on('click', function() {
+    const email = $('#emailSignin').val().trim();
+    const password = $('#passwordSignin').val().trim();
+    $.post('/login', {
+        email_address: email,
+        password: password
+    }, (result) => {
+   
+            if (result.success) {
+                location.href = '/landingpage'
+            } else {
+                console.log(`sorry`);
+            }
+
+    })
+})
+
+
+
 $("#modal2Open").on("click", function () {
     $("#modal1").modal("close")
     $("#modal2").modal("open")
