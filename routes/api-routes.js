@@ -27,9 +27,5 @@ module.exports = app => {
     app.get('/polls', authMiddleware.checkAuth, pollsController.getPolls);
     app.get('/polls/:session-id', pollsController.getPollByID);
     app.post('polls', authMiddleware.checkAuth, pollsController.addPoll);
-
-    app.get('/restricted', (req, res) => {
-        res.render('restricted');
-    })
 };
 

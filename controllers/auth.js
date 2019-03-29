@@ -37,10 +37,19 @@ const register = async (req, res) => {
             password: bcrypt.hashSync(req.body.password, parseInt(process.env.SALTROUNDS))
         };
         return userService.createUser(user)
-        .then(() => {
-            res.send({
-                success: true
+        .then((data) => {
+            // res.send({
+            //     success: true,
+            //     data: data
+            // });
+            let token = jwt.sign({email_address: data.email_address, password: data.password}, process.env.JWT_ENCRYPTION, {
+                expiresIn: process.env.JWT_EXPIRY
             });
+            res.cookie('jwt', token);
+            // return token;
+        })
+        .catch(error => {
+            res.json({message: `error: ${error}`})
         });
     })
 };
