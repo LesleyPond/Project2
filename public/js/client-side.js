@@ -1,5 +1,5 @@
 $(document).ready(function () {
-// On document load, initiate carousel of info tiles
+    // On document load, initiate carousel of info tiles
     $('.carousel').carousel();
     setInterval(function () {
         $('.carousel').carousel('next');
@@ -8,23 +8,23 @@ $(document).ready(function () {
 });
 
 //on sign up button click, check to make sure passwords match. If they don't, show error message. If they do, create new user in db, login, and go to landing page
-$('#signupButton').on('click', function() {
+$('#signupButton').on('click', function () {
     $("#noConfirm").hide();
     const regEmail = $('#emailSignup').val().trim();
     const regPassword = $('#passwordSignup').val().trim();
     const confPassword = $('#passwordSignupConfirm').val().trim();
-    
-    if (regPassword === confPassword){
+
+    if (regPassword === confPassword) {
         const userObj = {
             email_address: regEmail,
             password: regPassword
         };
-    
+
         $.post('/', userObj, (result) => {
             if (result.success) {
                 console.log(result)
-                 let currentUserId = result.data.id;
-                 localStorage.setItem('currentUserId', currentUserId);
+                let currentUserId = result.data.id;
+                localStorage.setItem('currentUserId', currentUserId);
                 console.log("current user id: ", currentUserId);
                 location.href = '/landingpage'
             } else {
@@ -32,19 +32,18 @@ $('#signupButton').on('click', function() {
                 $("#badSignin").append(result.message)
                 $("#badSignin").show()
             }
-    
-       
+
+
         })
-    }
-    else{
+    } else {
         $("#noConfirm").show();
     }
-   
+
 })
 
 
 //on sign in button click, sign in! If unable to sign in, show error div.//
-$('#signinButton').on('click', function() {
+$('#signinButton').on('click', function () {
     const email = $('#emailSignin').val().trim();
     const password = $('#passwordSignin').val().trim();
 
@@ -52,20 +51,21 @@ $('#signinButton').on('click', function() {
         email_address: email,
         password: password
     }, (result) => {
-   
-            if (result.success) {
-                console.log(result)
-                location.href = '/landingpage'
-            } else {
-                console.log(`sorry`);
-                $("#badLogin").show()
-            }
+
+        if (result.success) {
+            console.log(result)
+            location.href = '/landingpage'
+        } else {
+            console.log(`sorry`);
+            $("#badLogin").show()
+        }
 
     })
 });
 
-$(".signOutButton").on("click", function(){
+$(".signOutButton").on("click", function () {
     ///need to add sign out functionality//
+    localStorage.removeItem('currentUserId');
 })
 
 
@@ -88,7 +88,7 @@ $("#modal1Open").on("click", function () {
 let optionNumber = 2;
 $("#addMoreOptions").on("click", function () {
     optionNumber++;
-    if(optionNumber > 10){
+    if (optionNumber > 10) {
         return
     }
     let newInput = $("<input>");
@@ -116,45 +116,44 @@ $(document).on('click', '.optionDelete', function () {
         }
     })
     $(this).remove();
-    optionNumber --;
+    optionNumber--;
 });
 
 //send the poll info server side////
-$("#createPollButton").on("click", function(event){
+$("#createPollButton").on("click", function (event) {
     event.preventDefault();
     let question = $("#pollQuestion").val().trim();
     let option1 = $("#option1").val().trim();
     let option2 = $("#option2").val().trim();
     let option3 = $("#option3").val() || null;
     let option4 = $("#option4").val() || null;
-    let option5 = $("#option5").val()|| null;
-    let option6 = $("#option6").val()|| null;
-    let option7 = $("#option7").val()|| null;
-    let option8 = $("#option8").val()|| null;
-    let option9 = $("#option9").val()|| null;
+    let option5 = $("#option5").val() || null;
+    let option6 = $("#option6").val() || null;
+    let option7 = $("#option7").val() || null;
+    let option8 = $("#option8").val() || null;
+    let option9 = $("#option9").val() || null;
     let option10 = $("#option10").val() || null;
     let UserId = localStorage.getItem('currentUserId');
     let newPoll = {
         question: question,
-        option1 : option1,
-        option2 : option2,
-        option3 : option3,
-        option4 : option4,
-        option5 : option5,
-        option6 : option6,
-        option7 : option7,
-        option8 : option8,
-        option9 : option9,
-        option10 : option10,
+        option1: option1,
+        option2: option2,
+        option3: option3,
+        option4: option4,
+        option5: option5,
+        option6: option6,
+        option7: option7,
+        option8: option8,
+        option9: option9,
+        option10: option10,
         UserId: UserId
     }
     $.ajax("/polls", {
         type: "POST",
         data: newPoll
-    }).then(function(results){
+    }).then(function (results) {
         console.log(results)
-        location.href="viewPolls"
-        
+        location.href = "viewPolls"
+
     })
 })
-
