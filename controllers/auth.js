@@ -7,10 +7,10 @@ const userService = require('../services/user');
 const login = async (req, res) => {
     return await authService.authenticate(req.body)
         .then(token => {
-            res.cookie('jwt',token);
+            res.cookie('jwt',token.token);
             res.send({
                 success: true,
-                data: { token }
+                data: token
             });
             
         })
