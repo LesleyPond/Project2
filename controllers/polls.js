@@ -7,7 +7,7 @@ const getPolls = async (req, res) => {
             if (!data) {
                 res.json({authenticated: "just don't have data"})
             } else {
-                res.render('restricted');
+                res.render('viewsPoll', {data: data});
             } 
         })
 };
