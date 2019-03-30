@@ -21,7 +21,7 @@ const authenticate = async params => {
         let token = jwt.sign(payload, process.env.JWT_ENCRYPTION, {
             expiresIn: process.env.JWT_EXPIRY
         });
-        return token;
+        return {token:token, payload: payload};
     });
     
 };
