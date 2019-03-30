@@ -53,7 +53,9 @@ $('#signinButton').on('click', function () {
     }, (result) => {
 
         if (result.success) {
-            console.log(result)
+            console.log(result.data.payload.id)
+            let currentUserId = result.data.payload.id;
+            localStorage.setItem('currentUserId', currentUserId);
             location.href = '/landingpage'
         } else {
             console.log(`sorry`);
@@ -148,14 +150,16 @@ $("#createPollButton").on("click", function (event) {
         option8: option8,
         option9: option9,
         option10: option10,
-        UserId: UserId
+        UserId: UserId,
+        resultsPageURL : window.location.href + "/"+ UserId+ "/" + question + "/results",
+        votingPageURL: window.location.href + "/" + UserId+ "/"+ question + "/vote"
     }
     $.ajax("/polls", {
         type: "POST",
         data: newPoll
-    }).then(function (results) {
-        console.log(results)
-        location.href = "viewPolls"
-
+    }).done(function (results) {
+        console.log('result:', results)
+        var bodyContent = results.match(/<body>(.*)<\/body>/)[1]
+        $('body').html(bodyContent);
     })
 })

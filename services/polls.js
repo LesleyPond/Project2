@@ -1,6 +1,6 @@
 const db = require('../models');
 
-const getAll = () => db.Poll.findAll();
+const getAll = id => db.Poll.findAll({where: {UserId: id}});
 
 const getById = id => db.Poll.findById(id);
 
