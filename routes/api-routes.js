@@ -21,6 +21,10 @@ module.exports = app => {
     app.get('/pleaselogin', (req, res) => {
         res.render('pleaselogin');
     });
+
+    app.get('/results', (req, res) => {
+        res.render('results');
+    });
     
     app.post('/polls/:id', authMiddleware.checkAuth, pollsController.addPoll);
     app.get('/viewPolls/:id', pollsController.getPolls)
