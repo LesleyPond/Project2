@@ -7,9 +7,26 @@
 <div class="container">
     <div class="jumbo">
         <h4 class="animated fadeInDown">Your Polls</h4>
+        <table class="hightlight pollsTable">
+            <thead>
+                <tr>
+                    <th>Poll</th>
+                    <th>Voting Page</th>
+                    <th>Results Page</th>
+                </tr>
+            </thead>
+            <tbody>
+                    <% for (var datum of data){ %>
+                <tr>
+                    <td><%= datum.dataValues.question %></td>
+                    <td><%= datum.dataValues.votingPageURL %></td>
+                    <td><%= datum.dataValues.resultsPageURL %></td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
         <br>
         <br>
-        
     </div>
 </div>
 

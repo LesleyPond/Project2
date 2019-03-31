@@ -25,6 +25,7 @@ io.on('connection', (socket) => {
 
 
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '/public')));
@@ -34,7 +35,7 @@ require('./routes/api-routes')(app);
 
 
 
-db.sequelize.sync({force:true}).then(function(){
+db.sequelize.sync().then(function(){
     server.listen(PORT, () => {
       console.log(`App listening on PORT ${PORT}`);
     })

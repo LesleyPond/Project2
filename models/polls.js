@@ -97,7 +97,12 @@ module.exports = (sequelize, DataTypes) => {
             type:DataTypes.INTEGER,
             allowNull: true
         },
-
+        resultsPageURL : {
+            type: DataTypes.STRING,
+        },
+        votingPageURL : {
+            type: DataTypes.STRING,
+        }
     });
     Poll.associate = (models)=>{
         Poll.belongsTo(models.User, {

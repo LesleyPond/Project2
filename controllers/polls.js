@@ -1,14 +1,13 @@
 const pollSession = require('../services/polls');
 
 
-const getPolls = async (req, res) => {
-    await pollSession.getAll()
+const getPolls =  (req, res) => {
+UserId = req.params.id;
+console.log("user id on server side: " , UserId)
+     pollSession.getAll(UserId)
         .then(data => {
-            if (!data) {
-                res.json({authenticated: "just don't have data"})
-            } else {
-                res.render('restricted');
-            } 
+            console.log(data)
+            res.render('viewPolls', {data: data})
         })
 };
 
