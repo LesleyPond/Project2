@@ -2,8 +2,8 @@ const pollSession = require('../services/polls');
 
 
 const getPolls = async (req, res) => {
-    let UserId = parseInt(req.params.id.replace(':',''));
-    console.log(`this is the userid ${UserId}`);
+    // let UserId = parseInt(req.params.id.replace(':',''));
+    let UserId = 1;
     await pollSession.getAll(UserId)
         .then(data => {
             if (!data) {
@@ -22,13 +22,24 @@ const getPollByID = async (req, res) => {
         .then(data => res.send(data));
 };
 
-const addPoll = async (req, res) => {
+const addPoll = async (req, res, next) => {
+    let pollData;
+    console.log(req.body);
     pollSession.addPoll(req.body)
-        .then(data => res.send(data));
+        .then(data => {
+            pollData = data;
+        });
+        res.redirect('/viewPolls', {data: pollData})
+        next();
+}
+
+const loadHome = (req, res) => {
+    res.render('home');
 }
 
 module.exports = {
     getPolls: getPolls,
     getPollByID: getPollByID,
-    addPoll: addPoll
+    addPoll: addPoll,
+    loadHome: loadHome
 };

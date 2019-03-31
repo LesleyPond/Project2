@@ -154,12 +154,7 @@ $("#createPollButton").on("click", function (event) {
         resultsPageURL : window.location.href + "/"+ UserId+ "/" + question + "/results",
         votingPageURL: window.location.href + "/" + UserId+ "/"+ question + "/vote"
     }
-    $.ajax("/polls", {
-        type: "POST",
-        data: newPoll
-    }).done(function (results) {
-        console.log('result:', results)
-        var bodyContent = results.match(/<body>(.*)<\/body>/)[1]
-        $('body').html(bodyContent);
+    $.post("/polls", newPoll).then(function(results) {
+        console.log(results);
     })
 })

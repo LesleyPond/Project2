@@ -6,9 +6,10 @@ const pollSession = require('../services/polls');
 // Define routes for accessing various pages of the app. Most routes will initiate a render of the relevant view
 // Routes for polls and login will prompt authentications
 module.exports = app => {
-    app.get('/', (req, res) => {
-        res.render('home');
-    });
+    // app.get('/', (req, res) => {
+    //     res.render('home');
+    // });
+    app.get('/', pollsController.loadHome);
 
 
     app.get('/landingpage', authMiddleware.checkAuth, (req, res) =>{
@@ -33,6 +34,7 @@ module.exports = app => {
     // app.get('/polls', authMiddleware.checkAuth, pollsController.getPolls);
     // app.get('/polls/:session-id', pollsController.getPollByID);
     app.post('/polls', authMiddleware.checkAuth, pollsController.addPoll);
+    app.get('/viewPolls', pollsController.getPolls)
 
     // app.get('/restricted', (req, res) => {
     //     res.render('restricted');
