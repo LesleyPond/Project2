@@ -10,23 +10,23 @@
         <table class="hightlight pollsTable">
             <thead>
                 <tr>
-                    <th>Name</th>
+                    <th>Poll</th>
                     <th>Voting Page</th>
                     <th>Results Page</th>
                 </tr>
             </thead>
             <tbody>
-                
+                    <% for (var datum of data){ %>
                 <tr>
-                    <td><a href="#">Hello</a></td>
-                    <td><a href="#">World</a></td>
-                    <td><a href="#">Boo</a></td>
+                    <td><%= datum.dataValues.question %></td>
+                    <td><%= datum.dataValues.votingPageURL %></td>
+                    <td><%= datum.dataValues.resultsPageURL %></td>
                 </tr>
+                <% } %>
             </tbody>
         </table>
         <br>
         <br>
-        
     </div>
 </div>
 

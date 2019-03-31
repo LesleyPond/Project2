@@ -154,12 +154,12 @@ $("#createPollButton").on("click", function (event) {
         resultsPageURL : window.location.href + "/"+ UserId+ "/" + question + "/results",
         votingPageURL: window.location.href + "/" + UserId+ "/"+ question + "/vote"
     }
-    $.ajax("/polls", {
+    $.ajax("/polls/" + UserId, {
         type: "POST",
         data: newPoll
-    }).done(function (results) {
-        console.log('result:', results)
-        var bodyContent = results.match(/<body>(.*)<\/body>/)[1]
-        $('body').html(bodyContent);
+    }).then(function(results){
+        console.log("post results : " , results)
+       location.href="/viewPolls/"+UserId
     })
+
 })
