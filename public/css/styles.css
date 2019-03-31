@@ -102,3 +102,7 @@ h4{
 .options{
     width:450px!important;
 }
+.pollsTable{
+    margin:20px;
+    width: 1000px;
+}
