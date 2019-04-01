@@ -10,23 +10,23 @@
               <h5><%= data.dataValues.question %></h5>
               <div class="row">
     <div class = "col s6 offset-s3">      
-  <form action="#">
+  <form action="#" id="vote-Form">
         <p>
           <label>
-            <input type="radio" class="with-gap" name="group1" checked />
+            <input type="radio" class="with-gap" name="group1" value="<%= data.dataValues.option1 %>"checked />
             <span><%= data.dataValues.option1 %></span>
           </label>
         </p>
         <p>
           <label>
-            <input type="radio" class="with-gap" name="group1" />
+            <input type="radio" class="with-gap" name="group1" value="<%= data.option2 %>"/>
             <span><%= data.dataValues.option2 %></span>
           </label>
         </p>
         <% if (data.dataValues.option3) { %>
             <p>
                     <label>
-                      <input class="with-gap" name="group1" type="radio"  />
+                      <input class="with-gap" name="group1" type="radio" value="<%= data.option3 %>" />
                       <span><%= data.dataValues.option3 %></span>
                     </label>
                   </p>
@@ -34,7 +34,7 @@
            <% if (data.dataValues.option4) { %>
             <p>
                     <label>
-                      <input class="with-gap" name="group1" type="radio"  />
+                      <input class="with-gap" name="group1" type="radio" value="<%= data.option4 %>" />
                       <span><%= data.dataValues.option4 %></span>
                     </label>
                   </p>
@@ -42,7 +42,7 @@
            <% if (data.dataValues.option5) { %>
             <p>
                     <label>
-                      <input class="with-gap" name="group1" type="radio"  />
+                      <input class="with-gap" name="group1" type="radio" value="<%= data.option5 %>" />
                       <span><%= data.dataValues.option5 %></span>
                     </label>
                   </p>
@@ -50,7 +50,7 @@
            <% if (data.dataValues.option6) { %>
             <p>
                     <label>
-                      <input class="with-gap" name="group1" type="radio"  />
+                      <input class="with-gap" name="group1" type="radio" value="<%= data.option6 %>" />
                       <span><%= data.dataValues.option6 %></span>
                     </label>
                   </p>
@@ -58,7 +58,7 @@
            <% if (data.dataValues.option7) { %>
             <p>
                     <label>
-                      <input class="with-gap" name="group1"  type="radio"  />
+                      <input class="with-gap" name="group1"  type="radio" value="<%= data.option7%>" />
                       <span><%= data.dataValues.option7 %></span>
                     </label>
                   </p>
@@ -66,7 +66,7 @@
            <% if (data.dataValues.option8) { %>
             <p>
                     <label>
-                      <input class="with-gap" name="group1" type="radio"  />
+                      <input class="with-gap" name="group1" type="radio" value="<%= data.option8 %>" />
                       <span><%= data.dataValues.option8 %></span>
                     </label>
                   </p>
@@ -74,7 +74,7 @@
            <% if (data.dataValues.option9) { %>
             <p>
                     <label>
-                      <input class="with-gap" name="group1" type="radio"  />
+                      <input class="with-gap" name="group1" type="radio" value="<%= data.option9 %>" />
                       <span><%= data.dataValues.option9 %></span>
                     </label>
                   </p>
@@ -82,7 +82,7 @@
            <% if (data.dataValues.option10) { %>
             <p>
                     <label>
-                      <input class="with-gap" name="group1" type="radio"  />
+                      <input class="with-gap" name="group1" type="radio" value="<%= data.option10 %>" />
                       <span><%= data.dataValues.option10 %></span>
                     </label>
                   </p>

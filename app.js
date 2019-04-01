@@ -16,6 +16,10 @@ const io = socketIO(server);
 io.on('connection', (socket) => {
   console.log('new user connected');
 
+  socket.on('vote', (vote) => {
+    console.log(`vote: ${JSON.stringify(vote)}`);
+  });
+
   //user disconnected
   socket.on('disconnect', () => {
   console.log('user disconnected');
