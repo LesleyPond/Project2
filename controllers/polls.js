@@ -17,10 +17,10 @@ const getPollByID = async (req, res) => {
     question += '?';
    console.log("question:", question)
     await pollSession.getById(id, question)
-        .then(data => 
-            res.render('pollVote',{data:data}));
-};
-
+        .then(data =>{ 
+            res.render('pollVote',{data:data})
+        });
+    }
 const addPoll = async (req, res) => {
     pollSession.addPoll(req.body)
         .then(data => res.send(data));

@@ -6,46 +6,9 @@
 </div>
 <div class="container">
     <div class="jumbo">
-        <h4 class="animated fadeInDown">Your Polls</h4>
-        <table class="hightlight pollsTable">
-            <thead>
-                <tr>
-                    <th>Poll</th>
-                    <th>Voting Page</th>
-                    <th>Results Page</th>
-                </tr>
-            </thead>
-            <tbody>
-                    <% for (var datum of data){ %>
-                <tr>
-                    <td><%= datum.dataValues.question %></td>
-                    <td><a href="<%= datum.dataValues.votingPageURL %>">Vote on "<%= datum.dataValues.question %>"</a></td>
-                    <td><a href="<%= datum.dataValues.resultsPageURL %>">Results for " <%= datum.dataValues.question %>" </a></td>
-                </tr>
-                <% } %>
-            </tbody>
-        </table>
-        <br>
-        <br>
+        <h4 class="animated fadeInDown">Your Results</h4>
+       </div>
     </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 <!--settings modal-->
 <div id="modal3" class="modal modal3">

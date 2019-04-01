@@ -140,6 +140,7 @@ $("#createPollButton").on("click", function (event) {
     let option10 = $("#option10").val() || null;
     let UserId = localStorage.getItem('currentUserId');
     let questionNoSpaces = question.replace(/ /g, '+').replace('?', "");
+    let currentURL = window.location.href.replace("#", "")
     let newPoll = {
         question: question,
         option1: option1,
@@ -153,8 +154,8 @@ $("#createPollButton").on("click", function (event) {
         option9: option9,
         option10: option10,
         UserId: UserId,
-        resultsPageURL : window.location.href + "/"+ UserId +  "/results/" + questionNoSpaces,
-        votingPageURL: window.location.href + "/" + UserId + "/vote/" + questionNoSpaces,
+        resultsPageURL : currentURL + "/"+ UserId +  "/results/" + questionNoSpaces,
+        votingPageURL: currentURL + "/" + UserId + "/vote/" + questionNoSpaces,
     }
     $.ajax("/polls/" + UserId, {
         type: "POST",
