@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
     // On document load, initiate carousel of info tiles
     $('.carousel').carousel();
@@ -138,6 +139,7 @@ $("#createPollButton").on("click", function (event) {
     let option9 = $("#option9").val() || null;
     let option10 = $("#option10").val() || null;
     let UserId = localStorage.getItem('currentUserId');
+    let questionNoSpaces = question.replace(/ /g, '+').replace('?', "");
     let newPoll = {
         question: question,
         option1: option1,
@@ -151,8 +153,8 @@ $("#createPollButton").on("click", function (event) {
         option9: option9,
         option10: option10,
         UserId: UserId,
-        resultsPageURL : window.location.href + "/"+ UserId+ "/" + question + "/results",
-        votingPageURL: window.location.href + "/" + UserId+ "/"+ question + "/vote"
+        resultsPageURL : window.location.href + "/"+ UserId +  "/results/" + questionNoSpaces,
+        votingPageURL: window.location.href + "/" + UserId + "/vote/" + questionNoSpaces,
     }
     $.ajax("/polls/" + UserId, {
         type: "POST",
@@ -162,4 +164,4 @@ $("#createPollButton").on("click", function (event) {
        location.href="/viewPolls/"+UserId
     })
 
-})
+});

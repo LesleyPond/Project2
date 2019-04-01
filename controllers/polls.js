@@ -13,9 +13,12 @@ console.log("user id on server side: " , UserId)
 
 const getPollByID = async (req, res) => {
     const id = req.params.id;
-
-    await pollSession.getById(id)
-        .then(data => res.send(data));
+    let question = req.params.question.replace(/\+/g,' ');
+    question += '?';
+   console.log("question:", question)
+    await pollSession.getById(id, question)
+        .then(data => 
+            res.render('pollVote',{data:data}));
 };
 
 const addPoll = async (req, res) => {
