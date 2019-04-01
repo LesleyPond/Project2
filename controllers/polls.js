@@ -15,7 +15,7 @@ const getPollByID = async (req, res) => {
 
     await pollSession.getById(sessionID)
         .then(data => {
-            res.send(data)
+            res.render('pollVote', {data:data})
         });
 };
 
