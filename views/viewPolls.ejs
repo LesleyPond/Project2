@@ -19,9 +19,11 @@
                     <% for (var datum of data){ %>
                         <% var url = datum.votingPageURL.replace('createPoll', ''); %>
                 <tr>
-                    <td><%= datum.question %></td>
-                    <td><%= url %><%= datum.sessionID %></td>
-                    <td><%= url %><%= datum.sessionID %></td>
+
+                    <td><%= datum.dataValues.question %></td>
+                    <td><a href="<%= datum.dataValues.votingPageURL %>">Vote on "<%= datum.dataValues.question %>"</a></td>
+                    <td><a href="<%= datum.dataValues.resultsPageURL %>">Results for " <%= datum.dataValues.question %>" </a></td>
+
                 </tr>
                 <% } %>
             </tbody>

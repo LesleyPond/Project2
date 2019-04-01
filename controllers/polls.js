@@ -10,6 +10,7 @@ UserId = req.params.id;
 };
 
 const getPollByID = async (req, res) => {
+
     const sessionID = req.params.sessionID;
 
     await pollSession.getById(sessionID)
@@ -17,6 +18,7 @@ const getPollByID = async (req, res) => {
             res.send(data)
         });
 };
+
 
 const addPoll = async (req, res) => {
     pollSession.addPoll(req.body)
