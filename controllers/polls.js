@@ -3,19 +3,19 @@ const pollSession = require('../services/polls');
 
 const getPolls =  (req, res) => {
 UserId = req.params.id;
-console.log("user id on server side: " , UserId)
      pollSession.getAll(UserId)
         .then(data => {
-            console.log(data)
-            res.render('viewPolls', {data: data})
+            res.render('viewPolls', {data: data});
         })
 };
 
 const getPollByID = async (req, res) => {
-    const id = req.params.id;
+    const sessionID = req.params.sessionID;
 
-    await pollSession.getById(id)
-        .then(data => res.send(data));
+    await pollSession.getById(sessionID)
+        .then(data => {
+            res.send(data)
+        });
 };
 
 const addPoll = async (req, res) => {

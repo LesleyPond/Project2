@@ -17,10 +17,11 @@
             </thead>
             <tbody>
                     <% for (var datum of data){ %>
+                        <% var url = datum.votingPageURL.replace('createPoll', ''); %>
                 <tr>
-                    <td><%= datum.dataValues.question %></td>
-                    <td><%= datum.dataValues.votingPageURL %></td>
-                    <td><%= datum.dataValues.resultsPageURL %></td>
+                    <td><%= datum.question %></td>
+                    <td><%= url %><%= datum.sessionID %></td>
+                    <td><%= url %><%= datum.sessionID %></td>
                 </tr>
                 <% } %>
             </tbody>

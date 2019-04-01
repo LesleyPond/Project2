@@ -7,7 +7,7 @@ const checkAuth = (req, res, next) => {
 
     jwt.verify(token, process.env.JWT_ENCRYPTION, (error, decoded) => {
         if (error) {
-            return res.status(403).send({auth: false, message: `Failed to authenticate token. ${error}`}).redirect('/login');
+            return res.status(403).send({auth: false, message: `Failed to authenticate token. ${error}`});
         }
 
             

@@ -1,11 +1,7 @@
 {
   "development": {
     "username": "root",
-<<<<<<< HEAD
     "password": "mysecret",
-=======
-    "password": "12345",
->>>>>>> f31b3519d410eba5d470a5d4ea543ff69d897ac5
     "database": "poll_db",
     "host": "127.0.0.1",
     "dialect": "mysql"
