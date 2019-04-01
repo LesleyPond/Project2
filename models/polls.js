@@ -102,6 +102,11 @@ module.exports = (sequelize, DataTypes) => {
         },
         votingPageURL : {
             type: DataTypes.STRING,
+        },
+        sessionID: {
+            type: DataTypes.UUID,
+            defaultValue: DataTypes.UUIDV1,
+            primaryKey: true
         }
     });
     Poll.associate = (models)=>{

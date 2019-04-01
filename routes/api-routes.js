@@ -27,8 +27,12 @@ module.exports = app => {
     });
     
     app.post('/polls/:id', authMiddleware.checkAuth, pollsController.addPoll);
-    app.get('/viewPolls/:id', pollsController.getPolls)
-    app.get('/createPoll/:id/vote/:question', authMiddleware.checkAuth, pollsController.getPollByID)    
+
+    app.get('/viewPolls/:id', authMiddleware.checkAuth, pollsController.getPolls);
+    app.get('/votes/:sessionID', pollsController.getPollByID);
+        
+    
+
    
     app.get('/login', (req, res) => {
         res.render('login');
