@@ -19,8 +19,8 @@
                     <% for (var datum of data){ %>
                 <tr>
                     <td><%= datum.dataValues.question %></td>
-                    <td><%= datum.dataValues.votingPageURL %></td>
-                    <td><%= datum.dataValues.resultsPageURL %></td>
+                    <td><a href="<%= datum.dataValues.votingPageURL %>">Vote on "<%= datum.dataValues.question %>"</a></td>
+                    <td><a href="<%= datum.dataValues.resultsPageURL %>">Results for " <%= datum.dataValues.question %>" </a></td>
                 </tr>
                 <% } %>
             </tbody>

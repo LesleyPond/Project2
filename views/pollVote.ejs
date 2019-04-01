@@ -1,0 +1,148 @@
+<%-include("partials/header")%>
+
+<div class="navBar">
+    <span class="navvy"><button class=" btn btn-blue signOutButton">Sign Out</button></span>
+    <span class="navvy"><button class=" btn btn-blue modal-trigger" href=".modal3">Settings</button></span>
+</div>
+<div class="container">
+    <div class="jumbo">
+        <h4 class="animated fadeInDown">Vote!</h4>
+              <h5><%= data.dataValues.question %></h5>
+              <div class="row">
+    <div class = "col s6 offset-s3">      
+  <form action="#">
+        <p>
+          <label>
+            <input type="radio" class="with-gap" name="group1" checked />
+            <span><%= data.dataValues.option1 %></span>
+          </label>
+        </p>
+        <p>
+          <label>
+            <input type="radio" class="with-gap" name="group1" />
+            <span><%= data.dataValues.option2 %></span>
+          </label>
+        </p>
+        <% if (data.dataValues.option3) { %>
+            <p>
+                    <label>
+                      <input class="with-gap" name="group1" type="radio"  />
+                      <span><%= data.dataValues.option3 %></span>
+                    </label>
+                  </p>
+           <% } %>
+           <% if (data.dataValues.option4) { %>
+            <p>
+                    <label>
+                      <input class="with-gap" name="group1" type="radio"  />
+                      <span><%= data.dataValues.option4 %></span>
+                    </label>
+                  </p>
+           <% } %>
+           <% if (data.dataValues.option5) { %>
+            <p>
+                    <label>
+                      <input class="with-gap" name="group1" type="radio"  />
+                      <span><%= data.dataValues.option5 %></span>
+                    </label>
+                  </p>
+           <% } %>
+           <% if (data.dataValues.option6) { %>
+            <p>
+                    <label>
+                      <input class="with-gap" name="group1" type="radio"  />
+                      <span><%= data.dataValues.option6 %></span>
+                    </label>
+                  </p>
+           <% } %>
+           <% if (data.dataValues.option7) { %>
+            <p>
+                    <label>
+                      <input class="with-gap" name="group1"  type="radio"  />
+                      <span><%= data.dataValues.option7 %></span>
+                    </label>
+                  </p>
+           <% } %>
+           <% if (data.dataValues.option8) { %>
+            <p>
+                    <label>
+                      <input class="with-gap" name="group1" type="radio"  />
+                      <span><%= data.dataValues.option8 %></span>
+                    </label>
+                  </p>
+           <% } %>
+           <% if (data.dataValues.option9) { %>
+            <p>
+                    <label>
+                      <input class="with-gap" name="group1" type="radio"  />
+                      <span><%= data.dataValues.option9 %></span>
+                    </label>
+                  </p>
+           <% } %>
+           <% if (data.dataValues.option10) { %>
+            <p>
+                    <label>
+                      <input class="with-gap" name="group1" type="radio"  />
+                      <span><%= data.dataValues.option10 %></span>
+                    </label>
+                  </p>
+           <% } %>
+           <br>
+           <br>
+        <button type="submit" id="pollVoteSubmit" class="btn btn-blue">Submit</button>
+      </form>
+    </div> 
+</div>   
+        <br>
+        <br>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--settings modal-->
+<div id="modal3" class="modal modal3">
+    <div class="modal-content">
+        <h4>Change Password</h4>
+        <div class="row">
+            <form class="col s12">
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="passwordChange1" type="password" class="validate">
+                        <label for="passwordChange1">New Password</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="passwordChange2" type="password" class="validate">
+                        <label for="passwordChange2">Confirm New Password</label>
+                        <p style="display:none" id="passwordSuccess">Password
+                            succesfully updated</p>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-blue" id="updatePassword">Update</button>
+
+    </div>
+</div>
+<%-include("partials/footer")%>
