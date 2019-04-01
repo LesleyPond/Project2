@@ -151,8 +151,8 @@ $("#createPollButton").on("click", function (event) {
         option9: option9,
         option10: option10,
         UserId: UserId,
-        resultsPageURL : window.location.href + "/"+ UserId+ "/" + question + "/results",
-        votingPageURL: window.location.href + "/" + UserId+ "/"+ question + "/vote"
+        resultsPageURL : `${window.location.href}/results/`,
+        votingPageURL: `${window.location.href}/votes/`
     }
     $.ajax("/polls/" + UserId, {
         type: "POST",

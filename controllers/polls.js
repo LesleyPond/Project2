@@ -6,16 +6,8 @@ UserId = req.params.id;
 console.log("user id on server side: " , UserId)
      pollSession.getAll(UserId)
         .then(data => {
-<<<<<<< HEAD
-            if (!data) {
-                res.json({authenticated: "just don't have data"})
-            } else {
-                res.render('viewsPoll', {data: data});
-            } 
-=======
             console.log(data)
             res.render('viewPolls', {data: data})
->>>>>>> 85700b5cfac7ff097c5daf9d1bd536d11f1e547e
         })
 };
 

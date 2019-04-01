@@ -35,7 +35,7 @@ require('./routes/api-routes')(app);
 
 
 
-db.sequelize.sync().then(function(){
+db.sequelize.sync({force: true}).then(function(){
     server.listen(PORT, () => {
       console.log(`App listening on PORT ${PORT}`);
     })
