@@ -1,30 +1,36 @@
 const pollSession = require('../services/polls');
+let sessionID = '';
 
 
-const getPolls =  (req, res) => {
-UserId = req.params.id;
-console.log("user id on server side: " , UserId)
-     pollSession.getAll(UserId)
-        .then(data => {
-            console.log(data)
-            res.render('viewPolls', {data: data})
-        })
+const getPolls = (req, res) => {
+  UserId = req.params.id;
+  pollSession.getAll(UserId)
+      .then((data) => {
+        res.render('viewPolls', {data: data});
+      });
 };
 
 const getPollByID = async (req, res) => {
-    const id = req.params.id;
+  const sessionID = req.params.sessionID;
+  await pollSession.getById(sessionID)
+      .then((data) => {
+        res.render('pollVote', {data: data});
+      });
+};
 
-    await pollSession.getById(id)
-        .then(data => res.send(data));
+const updatePoll = async (req, res) => {
+  const id = req.body.UserId;
+  const voteCast = req.body.voteCast;
+  await pollSession.updatePoll(id, voteCast);
 };
 
 const addPoll = async (req, res) => {
-    pollSession.addPoll(req.body)
-        .then(data => res.send(data));
-}
-
+  pollSession.addPoll(req.body)
+      .then((data) => res.send(data));
+};
 module.exports = {
-    getPolls: getPolls,
-    getPollByID: getPollByID,
-    addPoll: addPoll
+  getPolls: getPolls,
+  getPollByID: getPollByID,
+  addPoll: addPoll,
+  updatePoll: updatePoll,
 };
