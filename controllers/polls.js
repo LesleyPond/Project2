@@ -19,7 +19,12 @@ const getPollByID = async (req, res) => {
         });
 };
 
-
+const updatePoll = async (req,res) => {
+    let id = req.body.UserId;
+    let voteCast = req.body.voteCast;
+    await pollSession.updatePoll(id,voteCast)
+    
+}
 const addPoll = async (req, res) => {
     pollSession.addPoll(req.body)
         .then(data => res.send(data));
@@ -28,5 +33,6 @@ const addPoll = async (req, res) => {
 module.exports = {
     getPolls: getPolls,
     getPollByID: getPollByID,
-    addPoll: addPoll
+    addPoll: addPoll,
+    updatePoll: updatePoll
 };

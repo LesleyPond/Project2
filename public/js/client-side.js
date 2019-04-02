@@ -139,8 +139,6 @@ $("#createPollButton").on("click", function (event) {
     let option9 = $("#option9").val() || null;
     let option10 = $("#option10").val() || null;
     let UserId = localStorage.getItem('currentUserId');
-    let questionNoSpaces = question.replace(/ /g, '+').replace('?', "");
-    let currentURL = window.location.href.replace("#", "")
     let newPoll = {
         question: question,
         option1: option1,
