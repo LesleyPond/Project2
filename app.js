@@ -19,6 +19,9 @@ io.on('connection', (socket) => {
   socket.on('vote', (vote) => {
     console.log(`vote: ${JSON.stringify(vote)}`);
   });
+  socket.on('pollCreated', (poll) => {
+    console.log(`poll: ${JSON.stringify(poll)}`);
+  });
 
   //user disconnected
   socket.on('disconnect', () => {

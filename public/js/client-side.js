@@ -124,6 +124,10 @@ $(document).on('click', '.optionDelete', function () {
     optionNumber--;
 });
 
+// const socket = io();
+// connected to the server
+
+
 //send the poll info server side////
 $("#createPollButton").on("click", function (event) {
     event.preventDefault();
@@ -155,6 +159,7 @@ $("#createPollButton").on("click", function (event) {
         resultsPageURL : `${window.location.href}results/`,
         votingPageURL: `${window.location.href}votes/`
     }
+    socket.emit('pollCreated', newPoll);
     $.ajax("/polls/" + UserId, {
         type: "POST",
         data: newPoll
