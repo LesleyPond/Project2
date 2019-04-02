@@ -1,6 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
 // Creation of table called "Poll", with fields for Question, Response Options, and Votes. 
 // Table is saved as const "Poll" and returned
+
   const Poll = sequelize.define('Poll', {
     question: {
       type: DataTypes.STRING,
@@ -116,6 +117,7 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: {
         allowNull: false,
       },
+
     });
   };
   return Poll;

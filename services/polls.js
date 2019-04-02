@@ -44,6 +44,7 @@ const updatePoll = (id, voteCast) => {
 
 const addPoll = (poll) => db.Poll.create(poll);
 
+
 module.exports = {
   getAll: getAll,
   getById: getById,
