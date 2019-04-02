@@ -8,7 +8,9 @@ $(document).ready(function() {
   $('.modal').modal();
 });
 
-//  on sign up button click, check to make sure passwords match. If they don't, show error message. If they do, create new user in db, login, and go to landing page
+//  on sign up button click, check to make sure passwords match.
+//  If they don't, show error message. If they do, create new user in db,
+//   login, and go to landing page
 $('#signupButton').on('click', function() {
   $('#noConfirm').hide();
   const regEmail = $('#emailSignup').val().trim();
@@ -78,10 +80,12 @@ $('#modal1Open').on('click', function() {
   $('#badLogin').hide();
 });
 
-// When a user clicks on #addMoreOptions, if the current option count is less than 10....
+// When a user clicks on #addMoreOptions,
+//  if the current option count is less than 10....
 // Grab the user input from the form, and assign to variable newInput
 // Add id, and type attributes. Add "options" as the class
-// Then generate a button with class "btn", text of "X", a data-id attribute, and "optionDelete" as a class
+// Then generate a button with class "btn", text of "X",
+//  a data-id attribute, and "optionDelete" as a class
 // Append the newInput and newButton to the #moreOptions div
 let optionNumber = 2;
 $('#addMoreOptions').on('click', function() {
@@ -103,8 +107,10 @@ $('#addMoreOptions').on('click', function() {
 });
 
 // When a user clicks on the delete button next to an option
-// grab the data-id attribute from the option selected, assign that value to a new variable called buttonID
-// look through each option div, and if the button ID of that div matches the button id assigned to buttonID, delete that option
+// grab the data-id attribute from the option selected,
+//  assign that value to a new variable called buttonID
+// look through each option div, and if the button ID of
+//  that div matches the button id assigned to buttonID, delete that option
 $(document).on('click', '.optionDelete', function() {
   const buttonID = $(this).attr('data-id');
   console.log(buttonID);

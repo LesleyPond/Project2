@@ -18,8 +18,8 @@
             </thead>
             <tbody>
                     <% for (var datum of data){ %>
-                        <% var url = datum.votingPageURL.replace('createPoll', ''); %>
-                        <% var results = datum.resultsPageURL.replace('createPoll', ''); %>
+                        <% var url = datum.votingPageURL.replace('createPoll', '').replace('#', ''); %>
+                        <% var results = datum.resultsPageURL.replace('createPoll', '').replace('#', ''); %>
                 <tr>
 
                     <td><%= datum.dataValues.question %></td>

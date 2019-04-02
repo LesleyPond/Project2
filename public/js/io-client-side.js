@@ -21,7 +21,6 @@ $('#vote-Form').on('submit', (event) => {
     data: newObj,
   }).then(function(results) {
     console.log(results);
-    
   });
 });
 
@@ -29,6 +28,4 @@ $('#vote-Form').on('submit', (event) => {
 socket.on('disconnect', () => {
   console.log(`disconnected from server`);
 });
-
-
 
