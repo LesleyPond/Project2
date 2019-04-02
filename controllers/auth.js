@@ -28,16 +28,21 @@ const register = async (req, res) => {
         if (exists) {
           return res.send({
             success: false,
-            message: `Registration failed. User with this email already registered`,
+            message:
+            `Registration failed. User with this email already registered`,
           });
         }
         const user = {
           email_address: email,
-          password: bcrypt.hashSync(req.body.password, parseInt(process.env.SALTROUNDS)),
+          password:
+           bcrypt.hashSync(req.body.password, parseInt(process.env.SALTROUNDS)),
         };
         return userService.createUser(user)
             .then((data) => {
-              const token = jwt.sign({email_address: data.email_address, password: data.password}, process.env.JWT_ENCRYPTION, {
+              const token = jwt.sign({
+                email_address: data.email_address, password: data.password},
+              process.env.JWT_ENCRYPTION,
+              {
                 expiresIn: process.env.JWT_EXPIRY,
               });
               res.cookie('jwt', token);
@@ -53,7 +58,9 @@ const register = async (req, res) => {
       });
 };
 const changePassword = async (req, res) => {
-  const password = req.body.password;
+  const password = bcrypt.hashSync(
+      req.body.password,
+      parseInt(process.env.SALTROUNDS));
   const id = req.params.id;
   userService.changePassword(id, password)
       .then((data) => res.send(data));
