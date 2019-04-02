@@ -6,6 +6,7 @@ socket.on('connect', () => {
 });
 
 $('#vote-Form').on('submit', (event) => {
+
   event.preventDefault();
   const voteCasted = $(`input[name=group1]:checked`).val();
   socket.emit('vote', {vote: voteCasted});
@@ -22,6 +23,7 @@ $('#vote-Form').on('submit', (event) => {
   }).then(function(results) {
     console.log(results);
   });
+
 });
 
 //  disconnected from the server
