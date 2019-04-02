@@ -1,4 +1,5 @@
 const pollSession = require('../services/polls');
+let sessionID = '';
 
 
 const getPolls =  (req, res) => {
@@ -11,7 +12,7 @@ UserId = req.params.id;
 
 const getPollByID = async (req, res) => {
 
-    const sessionID = req.params.sessionID;
+    sessionID = req.params.sessionID;
 
     await pollSession.getById(sessionID)
         .then(data => {
@@ -20,9 +21,9 @@ const getPollByID = async (req, res) => {
 };
 
 const updatePoll = async (req,res) => {
-    let id = req.body.UserId;
+    console.log(sessionID);
     let voteCast = req.body.voteCast;
-    await pollSession.updatePoll(id,voteCast)
+    await pollSession.updatePoll(sessionID,voteCast)
     
 }
 const addPoll = async (req, res) => {

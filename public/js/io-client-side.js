@@ -7,11 +7,11 @@ console.log(`Connected to server`);
 
 $('#vote-Form').on('submit', (event) => {
     event.preventDefault();
-    let voteCasted = $(`input[name=group1]:checked`).val();
+    const voteCasted = $(`input[name=group1]:checked`).val();
     socket.emit('vote', {vote: voteCasted});
-    let voteForDB = $(`input[name=group1]:checked`).attr('id');
+    const voteForDB = $(`input[name=group1]:checked`).attr('id');
     currentUserId = localStorage.getItem("currentUserId");
-    let newObj = {
+    const newObj = {
         UserId: currentUserId,
         voteCast: voteForDB
     }
