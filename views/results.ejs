@@ -2,42 +2,12 @@
 
 <div class="navBar">
     <span class="navvy"><button class=" btn btn-blue signOutButton">Sign Out</button></span>
-    <span class="navvy"><button class=" btn btn-blue modal-trigger" href=".modal3">Settings</button></span>
+   
 </div>
 <div class="container">
     <div class="jumbo">
-        <h4 class="animated fadeInDown">Your Results</h4>
+        <h4 class="animated fadeInDown">Poll Results</h4>
        </div>
     </div>
 
-<!--settings modal-->
-<div id="modal3" class="modal modal3">
-    <div class="modal-content">
-        <h4>Change Password</h4>
-        <div class="row">
-            <form class="col s12">
-
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="passwordChange1" type="password" class="validate">
-                        <label for="passwordChange1">New Password</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="passwordChange2" type="password" class="validate">
-                        <label for="passwordChange2">Confirm New Password</label>
-                        <p style="display:none" id="passwordSuccess">Password
-                            succesfully updated</p>
-                    </div>
-
-                </div>
-            </form>
-        </div>
-    </div>
-    <div class="modal-footer">
-        <button class="btn btn-blue" id="updatePassword">Update</button>
-
-    </div>
-</div>
 <%-include("partials/footer")%>

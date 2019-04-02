@@ -16,8 +16,7 @@
                                     <h4 class="animated fadeInDown">Create New Poll</h4>
                             </a>
                             </div>
-                            <div class="col s4 what navigatePolls">
-                                    <a href="viewPolls">
+                            <div class="col s4 what navigatePolls" id="navigateViewPolls">
                                     <img src="/images/polls.jpg" class="homeImage">
                                     <h4 class="animated fadeInDown">View Polls</h4>
                                 </a>
@@ -44,8 +43,9 @@
                                     <div class="input-field col s12">
                                             <input id="passwordChange2" type="password" class="validate">
                                             <label for="passwordChange2">Confirm New Password</label>
-                                            <p style="display:none" id="passwordSuccess">Password
+                                            <p style="display:none" style="color:red" id="passwordSuccess">Password
                                                     succesfully updated</p>
+                                                    <p style="display:none" style="color:red" id="passwordFail">Passwords do not match</p>
                                     </div>
 
                             </div>
