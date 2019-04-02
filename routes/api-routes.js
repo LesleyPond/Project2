@@ -3,7 +3,8 @@ const pollsController = require('../controllers/polls');
 const authMiddleware = require('../middlewares/auth');
 
 
-// Define routes for accessing various pages of the app. Most routes will initiate a render of the relevant view
+// Define routes for accessing various pages of the app.
+//  Most routes will initiate a render of the relevant view
 // Routes for polls and login will prompt authentications
 module.exports = (app) => {
   app.get('/', (req, res) => {
@@ -30,18 +31,17 @@ module.exports = (app) => {
 
   app.get('/viewPolls/:id', authMiddleware.checkAuth, pollsController.getPolls);
   app.get('/votes/:sessionID', pollsController.getPollByID);
-  app.put('/polls/update/:id', authMiddleware.checkAuth, pollsController.updatePoll);
+  app.put('/polls/update/:id',
+      authMiddleware.checkAuth,
+      pollsController.updatePoll);
   app.get('/login', (req, res) => {
     res.render('login');
   });
   app.post('/login', authController.login);
   app.post('/', authController.register);
 
-  app.put('/passwordChange/:id', authMiddleware.checkAuth, authController.changePassword)
-
-
-  // app.get('/restricted', (req, res) => {
-  //     res.render('restricted');
-  // });
+  app.put('/passwordChange/:id',
+      authMiddleware.checkAuth,
+      authController.changePassword);
 };
 
