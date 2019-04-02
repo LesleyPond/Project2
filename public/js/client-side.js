@@ -123,50 +123,6 @@ $(document).on('click', '.optionDelete', function() {
   optionNumber--;
 });
 
-<<<<<<< HEAD
-// const socket = io();
-// connected to the server
-
-
-//send the poll info server side////
-$("#createPollButton").on("click", function (event) {
-    event.preventDefault();
-    let question = $("#pollQuestion").val().trim();
-    let option1 = $("#option1").val().trim();
-    let option2 = $("#option2").val().trim();
-    let option3 = $("#option3").val() || null;
-    let option4 = $("#option4").val() || null;
-    let option5 = $("#option5").val() || null;
-    let option6 = $("#option6").val() || null;
-    let option7 = $("#option7").val() || null;
-    let option8 = $("#option8").val() || null;
-    let option9 = $("#option9").val() || null;
-    let option10 = $("#option10").val() || null;
-    let UserId = localStorage.getItem('currentUserId');
-    let newPoll = {
-        question: question,
-        option1: option1,
-        option2: option2,
-        option3: option3,
-        option4: option4,
-        option5: option5,
-        option6: option6,
-        option7: option7,
-        option8: option8,
-        option9: option9,
-        option10: option10,
-        UserId: UserId,
-        resultsPageURL : `${window.location.href}results/`,
-        votingPageURL: `${window.location.href}votes/`
-    }
-    socket.emit('pollCreated', newPoll);
-    $.ajax("/polls/" + UserId, {
-        type: "POST",
-        data: newPoll
-    }).then(function(results){
-       location.href="/viewPolls/"+UserId;
-    })
-=======
 //  send the poll info server side////
 $('#createPollButton').on('click', function(event) {
   event.preventDefault();
@@ -211,7 +167,6 @@ $('#navigateViewPolls').on('click', function() {
   const UserId = localStorage.getItem('currentUserId');
   location.href='/viewPolls/'+UserId;
 });
->>>>>>> 1d848cb06e9f66026db3accd86549ce8fb77497b
 
 //  change password functionality//
 $('#updatePassword').on('click', function() {
