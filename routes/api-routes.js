@@ -30,8 +30,8 @@ module.exports = app => {
 
     app.get('/viewPolls/:id', authMiddleware.checkAuth, pollsController.getPolls);
     app.get('/votes/:sessionID', pollsController.getPollByID);
-        
-    
+    app.put('/polls/update/:id', authMiddleware.checkAuth, pollsController.updatePoll)    
+   
 
    
     app.get('/login', (req, res) => {
