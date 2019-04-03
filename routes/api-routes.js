@@ -23,7 +23,7 @@ module.exports = (app) => {
     res.render('pleaselogin');
   });
 
-  app.get('/results', (req, res) => {
+  app.get('/results/:sessionID', (req, res) => {
     res.render('results');
   });
 
