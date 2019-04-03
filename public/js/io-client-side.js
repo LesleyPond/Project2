@@ -15,12 +15,13 @@ $('#vote-Form').on('submit', (event) =>{
     UserId: currentUserId,
     voteCast: voteForDB,
   };
-  location.href='/results';
+ 
   $.ajax('/polls/update/' + currentUserId, {
     type: 'PUT',
     data: newObj,
   }).then(function(results) {
-    console.log(results);
+    const sessionId = results;
+    location.href= '/results/' + sessionId;
   });
 });
 
