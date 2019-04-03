@@ -15,7 +15,6 @@ $('#vote-Form').on('submit', (event) =>{
     UserId: currentUserId,
     voteCast: voteForDB,
   };
- 
   $.ajax('/polls/update/' + currentUserId, {
     type: 'PUT',
     data: newObj,
