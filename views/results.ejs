@@ -7,9 +7,94 @@
 <div class="container">
     <div class="jumbo">
         <h4 class="animated fadeInDown">Poll Results</h4>
+        <h5><%="Question" %></h5><br>
         <canvas id="myChart"></canvas>
        </div>
        
     </div>
+
+    <script>
+
+
+        // create an object defining colors to be called later for formatting
+        window.chartColors = {    // Legend colors
+                  red: 'rgb(255, 99, 132)',
+                  orange: 'rgb(255, 159, 64)',
+                  yellow: 'rgb(255, 205, 86)',
+                  green: 'rgb(75, 192, 192)',
+                  blue: 'rgb(54, 162, 235)',
+                  purple: 'rgb(153, 102, 255)',
+                  grey: 'rgb(201, 203, 207)',
+                  teal: 'rgb(0,128,128)' ,
+                  pink: 'rgb(255,0,255)',
+                  lightBlue: 'rgb(0,255,255)'            
+              };
+      
+          // grab the location where the chart will be drawn, and attach it to the variable chartDiv
+        var chartDiv = document.getElementById('myChart').getContext('2d');
+      
+          // build the chart by initiating the "chart" class defined in the charts.js library
+          // pass in the node, jQuery instance, or 2d context of the canvas of where the chart will be drawn (chartDiv)
+          // define the chart type, populate "data" with arrays for datasets and labels, and populate "options" with any formatting preferences
+        var resultsPie = new Chart(chartDiv, {
+          type: 'doughnut',
+          data: {
+            datasets: [{
+              data: [1,2,3,4,5,4,3,2,1,3],
+              backgroundColor: [
+              window.chartColors.red,
+              window.chartColors.orange,
+              window.chartColors.yellow,
+              window.chartColors.green,
+              window.chartColors.blue,
+              window.chartColors.purple,
+              window.chartColors.grey,
+              window.chartColors.teal,
+              window.chartColors.pink,
+              window.chartColors.lightBlue
+              ]
+            }],
+            labels: ["Cat","Dog","Horse","Fish","Rabbit","Lizard","Parrot","Gerbil","Llama","Snakes"]
+          },
+          options: {
+            responsive: true,
+            legend: {
+                display: true,
+                position: 'bottom'
+            }
+            
+          }
+
+          
+          
+          }); 
+      
+        // Function to refresh chart on receipt of new data
+        let updateChart = function(newData){
+          // create empty arrays to hold the data values and label values
+          var data = [];
+          var label = [];
+      
+           //  run a for loop that will loop through the number of indexes in the new vote data submitted ("newData")
+           // the number of indexes should correspond to the number of voting options
+        for(var i = 0; i < newData.value.length; i++){
+            // update the vote count by adding the existing vote count in each index of the array to the new vote count in the corresponding index of the
+            // "newData" array
+          data[i] = data[i] + newData.value[i];
+            // set the list of vote options equal to the options sent over in "newData". This should establish the list of options on the first send
+            // and paste over with the same list on each subsequent send.
+          label[i] = newData.label[i];
+        }
+      
+        // execute the chart.update() function. This is a function in the charts.js library
+        chart.update();
+        };
+          
+      
+      // function refreshChart(){
+      //                 chart.update();
+      //             }
+          </script>
+      
 
 <%-include("partials/footer")%>
