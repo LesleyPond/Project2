@@ -97,7 +97,7 @@ $('#addMoreOptions').on('click', function() {
   newInput.attr('id', 'option' + optionNumber);
   newInput.addClass('options');
   newInput.attr('type', 'text');
-  newInput.addClass('options');
+  newInput.addClass('options2');
   const newButton = $('<button>');
   newButton.addClass('btn', 'btn-blue');
   newButton.text('x');
