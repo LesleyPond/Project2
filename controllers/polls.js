@@ -11,7 +11,7 @@ const getPolls = (req, res) => {
 };
 
 const getPollByID = async (req, res) => {
-  const sessionID = req.params.sessionID;
+  sessionID = req.params.sessionID;
   await pollSession.getById(sessionID)
       .then((data) => {
         res.render('pollVote', {data: data});
@@ -19,9 +19,11 @@ const getPollByID = async (req, res) => {
 };
 
 const updatePoll = async (req, res) => {
-  const id = req.body.UserId;
   const voteCast = req.body.voteCast;
-  await pollSession.updatePoll(id, voteCast);
+  await pollSession.updatePoll(sessionID, voteCast)
+      .then((data) => {
+        res.send(sessionID);
+      });
 };
 
 const addPoll = async (req, res) => {
