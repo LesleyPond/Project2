@@ -1,7 +1,9 @@
-body{
+html{
     background-image: url("/images/hands.jpg");
     background-repeat:no-repeat;
     background-size:cover;
+    overflow:hidden;
+    height:100%;
 }
 .nav-wrapper{
     background-color: #50b3da;
@@ -75,8 +77,8 @@ margin-left:80px;
     overflow:hidden;
 }
 .homeImage{
-    max-height:300px;
-    max-width:300px;
+    max-height:90%;
+    max-width:90%;
     opacity:1;
     margin:20px;
 }
@@ -100,12 +102,47 @@ h4{
     font-family: 'Comfortaa', cursive;
 }
 .options{
-    width:450px!important;
+    width:90%!important;
 }
 .pollsTable{
-    margin:20px;
-    width: 1000px;
+    margin:10px;
+    width: 90%;
+    word-wrap: break-word;
+    
+    
 }
 .centered {
     text-align:center;
+}
+.options2 {
+   width:75%!important;
+}
+.breakWord{
+    word-break: break-all;
+}
+
+
+
+@media screen and (max-width: 760px){
+    .carousel{
+        max-height:300px!important;  
+        margin-top:50px!important;
+       
+    }
+    .carouselitem{
+        height: 100px!important;
+        width:100px!important;
+    }  
+    .homeImage{
+        margin:5px;
+    }
+}
+
+@media screen and (max-width: 600px){
+     .navBar{
+      text-align:center;
+     }
+     .title{
+         font-size:80px;
+     }
 }
