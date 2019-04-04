@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '/public')));
 app.use(cookieParser());
 
-require('./routes/api-routes')(app, io, polls, votes);
+require('./routes/api-routes')(app, io);
 
   // user connected
 //   io.on('connection', (socket) => {

@@ -5,26 +5,6 @@
 //   console.log(`Connected to server`);
 // });
 
-<<<<<<< HEAD
-// $('#vote-Form').on('submit', (event) =>{
-//   event.preventDefault();
-//   const voteCasted = $(`input[name=group1]:checked`).val();
-//   socket.emit('vote', {vote: voteCasted});
-//   const voteForDB = $(`input[name=group1]:checked`).attr('id');
-//   currentUserId = localStorage.getItem('currentUserId');
-//   const newObj = {
-//     UserId: currentUserId,
-//     voteCast: voteForDB,
-//   };
-//   location.href='/results';
-//   $.ajax('/polls/update/' + currentUserId, {
-//     type: 'PUT',
-//     data: newObj,
-//   }).then(function(results) {
-//     console.log(results);
-//   });
-// });
-=======
 $('#vote-Form').on('submit', (event) =>{
   event.preventDefault();
   const voteCasted = $(`input[name=group1]:checked`).val();
@@ -43,7 +23,6 @@ $('#vote-Form').on('submit', (event) =>{
     location.href= '/results/' + sessionId;
   });
 });
->>>>>>> da4e497f52069175f8f2491aa5b7363ad4c543e0
 
 // //  disconnected from the server
 // socket.on('disconnect', () => {
