@@ -1,9 +1,9 @@
 
-const socket = io();
-// connected to the server
-socket.on('connect', () => {
-  console.log(`Connected to server`);
-});
+// const socket = io();
+// // connected to the server
+// socket.on('connect', () => {
+//   console.log(`Connected to server`);
+// });
 
 $('#vote-Form').on('submit', (event) =>{
   event.preventDefault();
@@ -24,8 +24,8 @@ $('#vote-Form').on('submit', (event) =>{
   });
 });
 
-//  disconnected from the server
-socket.on('disconnect', () => {
-  console.log(`disconnected from server`);
-});
+// //  disconnected from the server
+// socket.on('disconnect', () => {
+//   console.log(`disconnected from server`);
+// });
 

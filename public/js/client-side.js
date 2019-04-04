@@ -8,6 +8,15 @@ $(document).ready(function() {
   $('.modal').modal();
 });
 
+const socket = io();
+
+
+
+// connected to the server
+socket.on('connect', () => {
+  console.log(`Connected to server`);
+});
+
 //  on sign up button click, check to make sure passwords match.
 //  If they don't, show error message. If they do, create new user in db,
 //   login, and go to landing page
@@ -155,19 +164,50 @@ $('#createPollButton').on('click', function(event) {
     resultsPageURL: `${window.location.href}results/`,
     votingPageURL: `${window.location.href}votes/`,
   };
+  socket.emit('testpollidea', {poll: newPoll}); 
+
   $.ajax('/polls/' + UserId, {
     type: 'POST',
     data: newPoll,
-  }).then(function(results) {
+  }).then(function(results) { 
     location.href='/viewPolls/'+UserId;
   });
 });
+
+
+
+// $('#vote-Form').on('submit', (event) =>{
+//   event.preventDefault();
+//   const voteCasted = $(`input[name=group1]:checked`).val();
+//   socket.emit('vote', {vote: voteCasted});
+//   const voteForDB = $(`input[name=group1]:checked`).attr('id');
+//   currentUserId = localStorage.getItem('currentUserId');
+//   const newObj = {
+//     UserId: currentUserId,
+//     voteCast: voteForDB,
+//   };
+//   location.href='/results';
+//   $.ajax('/polls/update/' + currentUserId, {
+//     type: 'PUT',
+//     data: newObj,
+//   }).then(function(results) {
+//     console.log(results);
+//   });
+// });
+
+//  disconnected from the server
+socket.on('disconnect', () => {
+  console.log(`disconnected from server`);
+});
+
 
 
 $('#navigateViewPolls').on('click', function() {
   const UserId = localStorage.getItem('currentUserId');
   location.href='/viewPolls/'+UserId;
 });
+
+socket.on('test', (data) => console.log(data));
 
 //  change password functionality//
 $('#updatePassword').on('click', function() {
