@@ -58,7 +58,6 @@ module.exports = (app, io, polls, votes) => {
   app.get('/landingpage', authMiddleware.checkAuth, (req, res) =>{
     res.render('landingpage');
   });
-
   app.get('/createPoll', (req, res) => {
     res.render('createPoll');
   });
@@ -69,9 +68,7 @@ module.exports = (app, io, polls, votes) => {
   app.get('/results', (req, res) => {
     res.render('results', {votes: votes, polls: polls});
   });
-
   app.post('/polls/:id', authMiddleware.checkAuth, pollsController.addPoll);
-
   app.get('/viewPolls/:id', authMiddleware.checkAuth, pollsController.getPolls);
   app.get('/votes/:sessionID', pollsController.getPollByID);
   app.put('/polls/update/:id',
@@ -82,7 +79,6 @@ module.exports = (app, io, polls, votes) => {
   });
   app.post('/login', authController.login);
   app.post('/', authController.register);
-
   app.put('/passwordChange/:id',
       authMiddleware.checkAuth,
       authController.changePassword);
