@@ -6,11 +6,54 @@ const authMiddleware = require('../middlewares/auth');
 // Define routes for accessing various pages of the app.
 //  Most routes will initiate a render of the relevant view
 // Routes for polls and login will prompt authentications
-module.exports = (app) => {
+module.exports = (app, io, polls, votes) => {
+
+
+
+
   app.get('/', (req, res) => {
     res.render('home');
   });
 
+    // user connected
+    io.on('connection', (socket) => {
+      console.log('new user connected');
+
+      socket.on('createPoll', (poll) => {
+        polls.concat(poll);
+        console.log(polls);
+        });
+
+      socket.on('vote', (vote) => {
+        votes.concat(...vote);
+        console.log(votes);
+      });
+
+          // user disconnected
+      socket.on('disconnect', () => {
+        console.log('user disconnected');
+      });
+    });
+
+//   // user connected
+//   io.on('connection', (socket) => {
+//     console.log('new user connected');
+
+//     socket.on('createPoll', (poll) => {
+//     console.log(`poll: ${JSON.stringify(poll)}`);
+//     });
+
+
+//     socket.on('vote', (vote) => {
+//     console.log(`vote: ${JSON.stringify(vote)}`);
+//     });
+
+
+    // // user disconnected
+    // socket.on('disconnect', () => {
+    // console.log('user disconnected');
+    // });
+// });
 
   app.get('/landingpage', authMiddleware.checkAuth, (req, res) =>{
     res.render('landingpage');
@@ -24,7 +67,7 @@ module.exports = (app) => {
   });
 
   app.get('/results', (req, res) => {
-    res.render('results');
+    res.render('results', {votes: votes, polls: polls});
   });
 
   app.post('/polls/:id', authMiddleware.checkAuth, pollsController.addPoll);
@@ -43,5 +86,7 @@ module.exports = (app) => {
   app.put('/passwordChange/:id',
       authMiddleware.checkAuth,
       authController.changePassword);
+
+      return {polls, votes};
 };
 
