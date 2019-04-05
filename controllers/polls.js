@@ -12,9 +12,10 @@ const getPolls = (req, res) => {
 
 const getPollByID = async (req, res) => {
   sessionID = req.params.sessionID;
+  
   await pollSession.getById(sessionID)
       .then((data) => {
-        res.render('pollVote', {data: data});
+        return res.render('pollVote', {data: data});
       });
 };
 

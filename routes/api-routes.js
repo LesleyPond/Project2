@@ -21,7 +21,6 @@ module.exports = (app) => {
   });
 
   app.get('/results/:id', (req, res) => {
-
     res.render('results');
   });
   app.post('/polls/:id', authMiddleware.checkAuth, pollsController.addPoll);
