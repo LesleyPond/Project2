@@ -47,8 +47,4 @@ db.sequelize.sync({force: true}).then(function() {
   });
 });
 
-<<<<<<< HEAD
 module.exports = app;
-=======
-
->>>>>>> 623d7d96dd8cc3712743aa28b348ce4653f2fbd5
