@@ -20,12 +20,11 @@ global.votes = [];
     io.on('connection', (socket) => {
       console.log('new user connected');
 
-      socket.on('testpollidea', (poll) => {
-        if (polls) {
-        polls.push(poll);
-      }
-        console.log(polls);
-        });
+      // socket.on('testpollidea', (poll) => {
+      //   if (polls) {
+      //   polls.push(poll);
+      // }
+      //   });
 
         socket.emit('test', 'hello');
 
@@ -73,8 +72,7 @@ global.votes = [];
   });
 
   app.get('/results/:id', (req, res) => {
-    const id = req.params.id;
-    res.render(`results`, {votes: votes, polls: polls});
+    res.render(`results`, {data: votes});
   });
   app.post('/polls/:id', authMiddleware.checkAuth, pollsController.addPoll);
   app.get('/viewPolls/:id', authMiddleware.checkAuth, pollsController.getPolls);
