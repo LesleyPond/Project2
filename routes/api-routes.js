@@ -72,7 +72,11 @@ global.votes = [];
   });
 
   app.get('/results/:id', (req, res) => {
+<<<<<<< HEAD
+    res.render('results');
+=======
     res.render(`results`, {data: votes});
+>>>>>>> 623d7d96dd8cc3712743aa28b348ce4653f2fbd5
   });
   app.post('/polls/:id', authMiddleware.checkAuth, pollsController.addPoll);
   app.get('/viewPolls/:id', authMiddleware.checkAuth, pollsController.getPolls);
