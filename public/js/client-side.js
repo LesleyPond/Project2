@@ -12,6 +12,7 @@ const socket = io();
 
 
 
+
 // connected to the server
 socket.on('connect', () => {
   console.log(`Connected to server`);
@@ -164,7 +165,8 @@ $('#createPollButton').on('click', function(event) {
     resultsPageURL: `${window.location.href}results/`,
     votingPageURL: `${window.location.href}votes/`,
   };
-  socket.emit('testpollidea', {poll: newPoll}); 
+ localStorage.setItem('poll', JSON.stringify(newPoll));
+  // socket.emit('testpollidea', {poll: newPoll}); 
 
   $.ajax('/polls/' + UserId, {
     type: 'POST',
@@ -179,7 +181,8 @@ $('#createPollButton').on('click', function(event) {
 // $('#vote-Form').on('submit', (event) =>{
 //   event.preventDefault();
 //   const voteCasted = $(`input[name=group1]:checked`).val();
-//   socket.emit('vote', {vote: voteCasted});
+//   polldata.push({vote: voteCasted});
+//   socket.emit('vote', {vote: 'goodDay'});
 //   const voteForDB = $(`input[name=group1]:checked`).attr('id');
 //   currentUserId = localStorage.getItem('currentUserId');
 //   const newObj = {
@@ -194,6 +197,28 @@ $('#createPollButton').on('click', function(event) {
 //     console.log(results);
 //   });
 // });
+
+$('#vote-Form').on('submit', (event) =>{
+  event.preventDefault();
+  const voteCasted = $(`input[name=group1]:checked`).val();
+  // polldata.push({vote: voteCasted})
+  // polldata.push(localStorage.getItem('poll'))
+  localStorage.setItem('vote', voteCasted)
+  socket.emit('vote', {poll: JSON.parse(localStorage.getItem('poll')), vote: localStorage.getItem('vote')});
+  const voteForDB = $(`input[name=group1]:checked`).attr('id');
+  currentUserId = localStorage.getItem('currentUserId');
+  const newObj = {
+    UserId: currentUserId,
+    voteCast: voteForDB,
+  };
+  $.ajax('/polls/update/' + currentUserId, {
+    type: 'PUT',
+    data: newObj,
+  }).then(function(results) {
+    const sessionId = results;
+    location.href= '/results/' + sessionId;
+  });
+});
 
 //  disconnected from the server
 socket.on('disconnect', () => {
