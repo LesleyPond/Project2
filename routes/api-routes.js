@@ -70,9 +70,7 @@ module.exports = (app, io) => {
     res.render('pleaselogin');
   });
 
-  app.get('/results/:id', (req, res) => {
-    res.render(`results`, {data: votes});
-  });
+  app.get('/results/:sessionID', pollsController.getPollByID2);
   app.post('/polls/:id', authMiddleware.checkAuth, pollsController.addPoll);
   app.get('/viewPolls/:id', authMiddleware.checkAuth, pollsController.getPolls);
   app.get('/votes/:sessionID', pollsController.getPollByID);

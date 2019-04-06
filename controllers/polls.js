@@ -18,10 +18,24 @@ const getPollByID = async (req, res) => {
         return res.render('pollVote', {data: data});
       });
 };
+const getPollByID2 = async (req, res) => {
+  sessionID = req.params.sessionID;
+  
+  await pollSession.getById(sessionID)
+      .then((data) => {
+        console.log("data:", data);
+        return res.render('results', {data: data});
+      });
+};
 
 const updatePoll = async (req, res) => {
   const voteCast = req.body.voteCast;
-  await pollSession.updatePoll(sessionID, voteCast)
+  console.log("vote cast:", voteCast);
+  const currentUserId = req.body.UserId;
+  console.log("currentUser Id :", currentUserId);
+  const question = req.body.question;
+  console.log("question:", question)
+  await pollSession.updatePoll(currentUserId, question, voteCast)
       .then((data) => {
         res.send(sessionID);
       });
@@ -35,5 +49,6 @@ module.exports = {
   getPolls: getPolls,
   getPollByID: getPollByID,
   addPoll: addPoll,
+  getPollByID2: getPollByID2,
   updatePoll: updatePoll,
 };
