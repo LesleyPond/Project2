@@ -41,7 +41,7 @@ require('./routes/api-routes')(app, io);
 //     });
 // });
 
-db.sequelize.sync({force: true}).then(function() {
+db.sequelize.sync().then(function() {
   server.listen(PORT, () => {
     console.log(`App listening on PORT ${PORT}`);
   });
