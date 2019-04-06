@@ -11,9 +11,10 @@
         
        
         <h5><%= data.dataValues.question %></h5><br>
-
-        <% if (data.dataValues.option1 !== 0){ %>
+        <canvas id="myChart"></canvas>
+        <% if (data.dataValues.option1 !== ""){ %>
           <h6><%= data.dataValues.option1 %>  </h6>
+
           <span><h6><%= data.dataValues.option1Votes %></h6><span>
         <%}%>
 
@@ -63,38 +64,30 @@
 
     <script>
 
+       
+   const labelsArray = [];
+   const votesArray = [];
+    const funFunction = () => {
+      if ("<%= data.dataValues.option1 %>" != ""){
+             labelsArray.push("<%= data.dataValues.option1 %>");
+             votesArray.push("<%= data.dataValues.option1Votes %>");
+      }
+      if ("<%= data.dataValues.option2 %>" != ""){
+        labelsArray.push("<%= data.dataValues.option2 %>");
+             votesArray.push("<%= data.dataValues.option2Votes %>");
+      }
+      if ("<%= data.dataValues.option3 %>" != ""){
+        labelsArray.push("<%= data.dataValues.option3 %>");
+             votesArray.push("<%= data.dataValues.option3Votes %>");
+      }
+      console.log(labelsArray)
+      console.log(votesArray)
+    }
+     funFunction();
+
+       
         
-    
-
         
-        const dataObj = {};
-
-
-          const createHashTable = (votes) => {
-            
-            // check if votes passed in, is an array, if not create new array
-            if (!Array.isArray(votes) && typeof votes === 'string') {
-              votes = votes.split('/n');
-              console.log(votes);
-            } else if (!Array.isArray(votes) && typeof votes === 'object') {
-              console.log(`wrong format`);
-              return false;
-            }
-
-            //loop through the array
-
-            votes.forEach(currWord => {
-              //if the current word is not in the object add the word and set value to 0
-              if (!dataObj[currWord]) {
-                dataObj[currWord] = 0;
-              }
-              // increment the value for each word + 1
-              dataObj[currWord]++;
-            })
-            //return the new obj hash table
-            console.log(dataObj);
-            return dataObj;
-          };
       
         
         
@@ -124,7 +117,7 @@
           type: 'doughnut',
           data: {
             datasets: [{
-              data: data,
+              data: votesArray,
               backgroundColor: [
               window.chartColors.red,
               window.chartColors.orange,
@@ -138,7 +131,7 @@
               window.chartColors.lightBlue
               ]
             }],
-            labels: label
+            labels: labelsArray
           },
           options: {
             responsive: true,
@@ -153,30 +146,30 @@
           
           }); 
       
-          let updateChart = function(newData){
-          // create empty arrays to hold the data values and label values
-          var data = [];
-          var label = [];
+      //     let updateChart = function(newData){
+      //     // create empty arrays to hold the data values and label values
+      //     var data = [];
+      //     var label = [];
       
-           //  run a for loop that will loop through the number of indexes in the new vote data submitted ("newData")
-           // the number of indexes should correspond to the number of voting options
-        for(var i = 0; i < newData.value.length; i++){
-            // update the vote count by adding the existing vote count in each index of the array to the new vote count in the corresponding index of the
-            // "newData" array
-          data[i] = data[i] + newData.value[i];
-            // set the list of vote options equal to the options sent over in "newData". This should establish the list of options on the first send
-            // and paste over with the same list on each subsequent send.
-          label[i] = newData.label[i];
-        }
+      //      //  run a for loop that will loop through the number of indexes in the new vote data submitted ("newData")
+      //      // the number of indexes should correspond to the number of voting options
+      //   for(var i = 0; i < newData.value.length; i++){
+      //       // update the vote count by adding the existing vote count in each index of the array to the new vote count in the corresponding index of the
+      //       // "newData" array
+      //     data[i] = data[i] + newData.value[i];
+      //       // set the list of vote options equal to the options sent over in "newData". This should establish the list of options on the first send
+      //       // and paste over with the same list on each subsequent send.
+      //     label[i] = newData.label[i];
+      //   }
       
-        // execute the chart.update() function. This is a function in the charts.js library
-        chart.update();
-        };
+      //   // execute the chart.update() function. This is a function in the charts.js library
+      //   chart.update();
+      //   };
 
        
-      // function refreshChart(){
-                 chart.update();
-      //             }
+      // // function refreshChart(){
+      //            chart.update();
+      // //             }
           </script>
       
 
