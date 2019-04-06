@@ -103,31 +103,9 @@
           
           
           }); 
-      
-      //     let updateChart = function(newData){
-      //     // create empty arrays to hold the data values and label values
-      //     var data = [];
-      //     var label = [];
-      
-      //      //  run a for loop that will loop through the number of indexes in the new vote data submitted ("newData")
-      //      // the number of indexes should correspond to the number of voting options
-      //   for(var i = 0; i < newData.value.length; i++){
-      //       // update the vote count by adding the existing vote count in each index of the array to the new vote count in the corresponding index of the
-      //       // "newData" array
-      //     data[i] = data[i] + newData.value[i];
-      //       // set the list of vote options equal to the options sent over in "newData". This should establish the list of options on the first send
-      //       // and paste over with the same list on each subsequent send.
-      //     label[i] = newData.label[i];
-      //   }
-      
-      //   // execute the chart.update() function. This is a function in the charts.js library
-      //   chart.update();
-      //   };
-
-       
-      // // function refreshChart(){
-      //            chart.update();
-      // //             }
+   
+          setInterval(function(){chart.update() }, 1000);
+    
           </script>
       
 
