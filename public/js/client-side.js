@@ -165,8 +165,8 @@ $('#createPollButton').on('click', function(event) {
     resultsPageURL: `${window.location.href}results/`,
     votingPageURL: `${window.location.href}votes/`,
   };
- localStorage.setItem('poll', JSON.stringify(newPoll));
-  // socket.emit('testpollidea', {poll: newPoll}); 
+  localStorage.setItem('poll', JSON.stringify(newPoll));
+  // socket.emit('testpollidea', {poll: newPoll});
 
   $.ajax('/polls/' + UserId, {
     type: 'POST',
