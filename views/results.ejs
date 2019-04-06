@@ -9,7 +9,7 @@
         <h4 class="animated fadeInDown">Poll Results</h4>
   
         <% data.forEach(pollData => { %>
-          <% if (<%= pollData.poll.question %>) { %>
+          <% if ("<%= pollData.poll.question %>") { %>
             <h5><%= pollData.poll.question %></h5><br>
           <% } else { %>
             <h5><%= "working on it" %></h5><br>
@@ -23,7 +23,7 @@
 
     <script>
 
-
+    
 
         
         const dataObj = {};
@@ -116,58 +116,7 @@
           
           
           }); 
-
-
-          const createHashTable = (votes) => {
-            
-            // check if votes passed in, is an array, if not create new array
-            if (!Array.isArray(array) && typeof votes === 'string') {
-              votes = votes.split(' ');
-            } else if (!Array.isArray(votes) && typeof votes === 'object') {
-              console.log(`wrong format`);
-              return false;
-            }
-
-            //loop through the array
-
-            votes.forEach(currWord => {
-              //if the current word is not in the object add the word and set value to 0
-              if (!dataObj[currWord]) {
-                dataObj[currWord] = 0;
-              }
-              // increment the value for each word + 1
-              dataObj[currWord]++;
-            })
-            //return the new obj hash table
-            return dataObj;
-          };
-
-
       
-        // Function to refresh chart on receipt of new data
-        let updateChart = function(newData){
-          // create empty arrays to hold the data values and label values
-
-      
-           //  run a for loop that will loop through the number of indexes in the new vote data submitted ("newData")
-           // the number of indexes should correspond to the number of voting options
-        for(var i = 0; i < newData.value.length; i++){
-            // update the vote count by adding the existing vote count in each index of the array to the new vote count in the corresponding index of the
-            // "newData" array
-          data[i] = data[i] + newData.value[i];
-            // set the list of vote options equal to the options sent over in "newData". This should establish the list of options on the first send
-            // and paste over with the same list on each subsequent send.
-          label[i] = newData.label[i];
-        }
-      
-        // execute the chart.update() function. This is a function in the charts.js library
-        chart.update();
-        };
-        
-
-        
-          
-
       // function refreshChart(){
       //                 chart.update();
       //             }
