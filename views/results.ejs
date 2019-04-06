@@ -9,7 +9,12 @@
         <h4 class="animated fadeInDown">Poll Results</h4>
   
         <% data.forEach(pollData => { %>
-        <h5><%= pollData.poll.question %></h5><br>
+          <% if (<%= pollData.poll.question %>) { %>
+            <h5><%= pollData.poll.question %></h5><br>
+          <% } else { %>
+            <h5><%= "working on it" %></h5><br>
+          <% } %>
+        
       <% }) %>
         <canvas id="myChart"></canvas>
        </div>
@@ -18,7 +23,7 @@
 
     <script>
 
-        let ansName = [];
+          
 
         var data = [2,5,7];
         var label = ['red', 'blue', 'green'];
@@ -101,6 +106,8 @@
             //return the new obj hash table
             return dataObj;
           };
+
+
       
         // Function to refresh chart on receipt of new data
         let updateChart = function(newData){
