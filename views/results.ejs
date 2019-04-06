@@ -23,13 +23,47 @@
 
     <script>
 
+
+
+        
+        const dataObj = {};
+
+
+          const createHashTable = (votes) => {
+            
+            // check if votes passed in, is an array, if not create new array
+            if (!Array.isArray(votes) && typeof votes === 'string') {
+              votes = votes.split('/n');
+              console.log(votes);
+            } else if (!Array.isArray(votes) && typeof votes === 'object') {
+              console.log(`wrong format`);
+              return false;
+            }
+
+            //loop through the array
+
+            votes.forEach(currWord => {
+              //if the current word is not in the object add the word and set value to 0
+              if (!dataObj[currWord]) {
+                dataObj[currWord] = 0;
+              }
+              // increment the value for each word + 1
+              dataObj[currWord]++;
+            })
+            //return the new obj hash table
+            console.log(dataObj);
+            return dataObj;
+          };
+      
+        
+        
+        const voteData = createHashTable("<%= data[0].vote %>");
+        console.log("votedata", "<%= data[0].vote %>")
+        var data = Object.values(voteData);
+        var label = Object.keys(voteData);
+        console.log("label", label);
           
-
-        var data = [2,5,7];
-        var label = ['red', 'blue', 'green'];
-        global.dataObj = {};
-
-
+        
         // create an object defining colors to be called later for formatting
         window.chartColors = {    // Legend colors
                   red: 'rgb(255, 99, 132)',
@@ -76,12 +110,13 @@
                 display: true,
                 position: 'bottom'
             }
-            
+          
           }
 
           
           
           }); 
+
 
           const createHashTable = (votes) => {
             
@@ -132,7 +167,7 @@
 
         
           
-      
+
       // function refreshChart(){
       //                 chart.update();
       //             }
