@@ -207,7 +207,7 @@ $('#vote-Form').on('submit', (event) =>{
   socket.emit('vote', {poll: JSON.parse(localStorage.getItem('poll')), vote: localStorage.getItem('vote')});
   const voteForDB = $(`input[name=group1]:checked`).attr('id');
   console.log(voteForDB);
-  currentUserId = localStorage.getItem('currentUserId');
+  currentUserId = $("#invisible").text();
   let currentQuestion = $("#currentQuestion").text();
   console.log("current Question:", currentQuestion);
   const newObj = {
