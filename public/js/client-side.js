@@ -257,3 +257,10 @@ $('#updatePassword').on('click', function() {
     $('#passwordFail').show();
   }
 });
+
+$('.signOutButton').on('click', function() {
+  console.log('sign me out')
+  var delete_cookie = function() { document.cookie = 'jwt' + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;'; };
+  delete_cookie()
+  location.href='/pleaselogin';
+});
