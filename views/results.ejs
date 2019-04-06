@@ -7,10 +7,53 @@
 <div class="container">
     <div class="jumbo">
         <h4 class="animated fadeInDown">Poll Results</h4>
-  
-        <% data.forEach(pollData => { %>
-        <h5><%= pollData.poll.question %></h5><br>
-      <% }) %>
+        
+       
+        <h5><%= data.dataValues.question %></h5><br>
+
+        <% if (data.dataValues.option1 !== 0){ %>
+          <h6><%= data.dataValues.option1 %>  </h6>
+          <span><h6><%= data.dataValues.option1Votes %></h6><span>
+        <%}%>
+
+        <% if (data.dataValues.option2 !== ""){ %>
+          <h6><%= data.dataValues.option2 %>  </h6>
+          <span><h6><%= data.dataValues.option2Votes %></h6><span>
+        <%}%>
+        <% if (data.dataValues.option3 !== ""){ %>
+          <h6><%= data.dataValues.option3 %>  </h6>
+          <span><h6><%= data.dataValues.option3Votes %></h6><span>
+        <%}%>
+        <% if (data.dataValues.option4 !== ""){ %>
+          <h6><%= data.dataValues.option4 %>  </h6>
+          <span><h6><%= data.dataValues.option4Votes %></h6><span>
+        <%}%>
+        <% if (data.dataValues.option5 !== ""){ %>
+          <h6><%= data.dataValues.option5 %>  </h6>
+          <span><h6><%= data.dataValues.option5Votes %></h6><span>
+        <%}%>
+        <% if (data.dataValues.option6 !== ""){ %>
+          <h6><%= data.dataValues.option6 %>  </h6>
+          <span><h6><%= data.dataValues.option6Votes %></h6><span>
+        <%}%>
+        <% if (data.dataValues.option7 !== ""){ %>
+          <h6><%= data.dataValues.option7 %>  </h6>
+          <span><h6><%= data.dataValues.option7Votes %></h6><span>
+        <%}%>
+        <% if (data.dataValues.option8 !== ""){ %>
+          <h6><%= data.dataValues.option8 %>  </h6>
+          <span><h6><%= data.dataValues.option8Votes %></h6><span>
+        <%}%>
+        <% if (data.dataValues.option9 !== ""){ %>
+          <h6><%= data.dataValues.option9 %>  </h6>
+          <span><h6><%= data.dataValues.option9Votes %></h6><span>
+        <%}%>
+        <% if (data.dataValues.option10 !== ""){ %>
+          <h6><%= data.dataValues.option10 %>  </h6>
+          <span><h6><%= data.dataValues.option10Votes %></h6><span>
+        <%}%>
+        
+    
         <canvas id="myChart"></canvas>
        </div>
        
@@ -18,6 +61,7 @@
 
     <script>
 
+        
     
 
         
@@ -52,12 +96,7 @@
       
         
         
-        const voteData = createHashTable("<%= data[0].vote.vote %>");
-        
-        var data = Object.values(voteData);
-        var label = Object.keys(voteData);
-        console.log("label", label);
-          
+       
         
         // create an object defining colors to be called later for formatting
         window.chartColors = {    // Legend colors

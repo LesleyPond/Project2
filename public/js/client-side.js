@@ -203,12 +203,16 @@ $('#vote-Form').on('submit', (event) =>{
   const voteCasted = $(`input[name=group1]:checked`).val();
   // polldata.push({vote: voteCasted})
   // polldata.push(localStorage.getItem('poll'))
-  localStorage.setItem('vote', voteCasted)
+  localStorage.setItem('vote', voteCasted);
   socket.emit('vote', {poll: JSON.parse(localStorage.getItem('poll')), vote: localStorage.getItem('vote')});
   const voteForDB = $(`input[name=group1]:checked`).attr('id');
+  console.log(voteForDB);
   currentUserId = localStorage.getItem('currentUserId');
+  let currentQuestion = $("#currentQuestion").text();
+  console.log("current Question:", currentQuestion);
   const newObj = {
     UserId: currentUserId,
+    question: currentQuestion,
     voteCast: voteForDB,
   };
   $.ajax('/polls/update/' + currentUserId, {
